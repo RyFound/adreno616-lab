@@ -119,20 +119,33 @@ proprietary) sengaja **tidak** ada di repo ini — lihat §7.
 ## 4. Struktur
 
 ```
-bench.c kernels.S build.sh     benchmark RAM + disk, satu binary (asm tangan untuk kernel NEON)
-clinfo.c clprobe*.c clver.c    probe OpenCL: platform, device, versi, binary program
-gpucl.c oclmech*.c oclws*.c    harness OpenCL (fma vs mul+add, bentuk grid, workgroup)
-vkcomp.c gpufma.c              harness Vulkan awal
-dsp*.c socprobe.c vidprobe.c   probe DSP Hexagon, SoC, video codec
-vdec*.c                        probe decode H.264 via V4L2
+src/
+  mem/       bench.c kernels.S build.sh   benchmark RAM + disk (asm NEON tangan)
+  opencl/    clinfo.c clprobe*.c clver.c  probe OpenCL: platform, device, versi, binary
+             gpucl.c oclmech*.c oclws*.c  harness OpenCL (fma vs mul+add, grid, workgroup)
+  vulkan/    vkcomp.c gpufma.c            harness Vulkan awal
+  gles/      gles.c                       probe OpenGL ES
+  soc/       socprobe.c dsp*.c            probe SoC dan DSP Hexagon
+  video/     vdec*.c vidprobe.c           probe decode H.264 via V4L2
+  misc/      hello.c                      smoke test
 
-r1/  ruang konfigurasi: batch-vs-fence, OpenCL lsize×ILP        (SPEC/REVIEW/RESULTS/VERIFY)
-r2/  strategi eksekusi: representasi × compiler × bentuk kernel
-r3/  pembeda spike K=2 (L-sweep) + jalur fma()
-r4/  eliminasi mekanisme spike + batas dispatch
-r5/  matriks register-hidup × independent-FMA (B4/B5)
-r5b/ kontrol satu-variabel untuk B5 (definisi sebelum vs sesudah loop)
+rounds/
+  r1/   ruang konfigurasi: batch-vs-fence, OpenCL lsize-ILP   (SPEC/REVIEW/RESULTS/VERIFY)
+  r2/   strategi eksekusi: representasi, compiler, bentuk kernel
+  r3/   pembeda spike K=2 (L-sweep) + jalur fma()
+  r4/   eliminasi mekanisme spike + batas dispatch
+  r5/   matriks register-hidup x independent-FMA (B4/B5)
+  r5b/  kontrol satu-variabel untuk B5 (definisi sebelum vs sesudah loop)
+
+shaders/   .comp contoh di root (fma.comp, fma8.comp)
+docs/      catatan temuan
+logs/      output probe yang direkam
+assets/    test vector pihak ketiga (tidak di-track)
+build/     hasil build (tidak di-track)
 ```
+
+Round run scripts resolve their own directory (cd dirname 0), so a checkout works
+from any path - no absolute path is baked in.
 
 Setiap ronde punya `RESULTS.md` (angka + adjudikasi) dan raw log mentah. `r1` juga punya
 `SPEC.md`/`REVIEW.md`/`VERIFY.md` karena dijalankan sebagai ronde berkontrak.
@@ -152,16 +165,16 @@ Device   Android dengan Adreno 616, akses root, /vendor ter-mount di chroot
 ### Benchmark RAM/disk (host native)
 
 ```sh
-./build.sh          # -Os + flag size, kernel HOT di-O3 lewat __attribute__
-./bench mem         # sweep cache 8 KB -> 256 MB, thread scaling, pointer-chase
-./bench disk ./bench.bin
+./src/mem/build.sh  # -Os + flag size, kernel HOT di-O3 lewat __attribute__
+./build/bench mem         # sweep cache 8 KB -> 256 MB, thread scaling, pointer-chase
+./build/bench disk ./bench.bin
 ```
 
 ### Harness GPU (bionic, cross-compile)
 
 ```sh
 CC=/opt/android/android-sdk/ndk/30.0.14904198/toolchains/llvm/prebuilt/linux-arm64/bin/aarch64-linux-android33-clang
-$CC -O2 -o vkopt8 gpu-r4/vkopt8.c -ldl
+$CC -O2 -o build/vkopt8 rounds/r4/vkopt8.c -ldl
 
 # jalankan dari chroot; path biner HARUS absolut
 LD_LIBRARY_PATH=/vendor/lib64:/system/lib64 \
@@ -184,7 +197,7 @@ glslangValidator -V -o out.spv in.comp && spirv-val out.spv
 ```
 
 Tiga ronde punya generator yang membuat semua selnya dari satu template (provenance seragam):
-`gpu-r2/gen_vk_shaders.py`, `gpu-r3/gen_grid.py`, `gpu-r5/gen_r5.py`.
+`rounds/r2/gen_vk_shaders.py`, `rounds/r3/gen_grid.py`, `rounds/r5/gen_r5.py`.
 
 **Batasan yang perlu diketahui:** dari 55 `.spv` di tree asli, **14 tidak punya `.comp` senama** —
 file itu dihasilkan generator atau sudah dihapus. Artinya tidak semua sel bisa di-rebuild persis

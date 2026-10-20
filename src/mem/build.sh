@@ -12,6 +12,7 @@
 set -e
 cd "$(dirname "$0")"
 FL='-ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -fno-unwind-tables -fno-ident -fno-stack-protector -Wl,--gc-sections -Wl,--build-id=none -Wl,-z,norelro'
-gcc -Os -pthread $FL -o bench bench.c kernels.S -w
-strip -s bench
-ls -l bench | awk '{printf "built bench: %s bytes\n", $5}'
+mkdir -p ../../build
+gcc -Os -pthread $FL -o ../../build/bench bench.c kernels.S -w
+strip -s ../../build/bench
+ls -l ../../build/bench
