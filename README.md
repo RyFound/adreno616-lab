@@ -119,7 +119,7 @@ proprietary) sengaja **tidak** ada di repo ini — lihat §7.
 ## 4. Struktur
 
 ```
-src/
+src/                                  probe & harness bersama (dipakai lintas ronde)
   mem/       bench.c kernels.S build.sh   benchmark RAM + disk (asm NEON tangan)
   opencl/    clinfo.c clprobe*.c clver.c  probe OpenCL: platform, device, versi, binary
              gpucl.c oclmech*.c oclws*.c  harness OpenCL (fma vs mul+add, grid, workgroup)
@@ -129,8 +129,15 @@ src/
   video/     vdec*.c vidprobe.c           probe decode H.264 via V4L2
   misc/      hello.c                      smoke test
 
-rounds/
-  r1/   ruang konfigurasi: batch-vs-fence, OpenCL lsize-ILP   (SPEC/REVIEW/RESULTS/VERIFY)
+rounds/rN/                            satu direktori per ronde, bentuknya seragam
+  RESULTS.md  SPEC.md  REVIEW.md  VERIFY.md   dokumen (r1 punya keempatnya)
+  run_*.sh  gen_*.py                        script & generator ronde itu
+  src/                                     harness khusus ronde (vkopt8.c, oclgrid.c, ...)
+  shaders/                                 .comp + .spv ronde itu
+  logs/                                    raw log ronde itu
+  artifacts/                               *.bin program OpenCL (tidak di-track)
+
+  r1/   ruang konfigurasi: batch-vs-fence, OpenCL lsize-ILP
   r2/   strategi eksekusi: representasi, compiler, bentuk kernel
   r3/   pembeda spike K=2 (L-sweep) + jalur fma()
   r4/   eliminasi mekanisme spike + batas dispatch
@@ -139,13 +146,14 @@ rounds/
 
 shaders/   .comp contoh di root (fma.comp, fma8.comp)
 docs/      catatan temuan
-logs/      output probe yang direkam
+logs/      output probe yang direkam (di luar ronde)
 assets/    test vector pihak ketiga (tidak di-track)
-build/     hasil build (tidak di-track)
+build/     hasil build, dipisah per ronde: build/r1, build/r3, build/r4 (tidak di-track)
 ```
 
-Round run scripts resolve their own directory (cd dirname 0), so a checkout works
-from any path - no absolute path is baked in.
+Round run scripts resolve their own directory (`cd "$(dirname "$0")"`), so a checkout works
+from any path - no absolute path is baked in. From inside `rounds/rN/`, the shared binaries
+are reached as `../../build/rN/<name>` and the shaders as `shaders/<name>.spv`.
 
 Setiap ronde punya `RESULTS.md` (angka + adjudikasi) dan raw log mentah. `r1` juga punya
 `SPEC.md`/`REVIEW.md`/`VERIFY.md` karena dijalankan sebagai ronde berkontrak.
@@ -174,11 +182,11 @@ Device   Android dengan Adreno 616, akses root, /vendor ter-mount di chroot
 
 ```sh
 CC=/opt/android/android-sdk/ndk/30.0.14904198/toolchains/llvm/prebuilt/linux-arm64/bin/aarch64-linux-android33-clang
-$CC -O2 -o build/vkopt8 rounds/r4/vkopt8.c -ldl
+$CC -O2 -o build/r4/vkopt8 rounds/r4/src/vkopt8.c -ldl
 
 # jalankan dari chroot; path biner HARUS absolut
 LD_LIBRARY_PATH=/vendor/lib64:/system/lib64 \
-  /apex/com.android.runtime/bin/linker64 /path/absolut/vkopt8 2000 65536 10 64 2 ramp
+  /apex/com.android.runtime/bin/linker64 "$PWD/build/r4/vkopt8" 2000 65536 10 64 2 ramp
 ```
 
 Jebakan yang sudah memakan waktu dan karena itu dicatat:

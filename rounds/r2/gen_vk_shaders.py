@@ -2,7 +2,7 @@
 # Generate vkopt K=1..16 L=64 compute shaders from ONE identical template.
 # Control for advisor finding 1: single template => uniform SPIR-V provenance.
 import sys, os
-base = sys.argv[1] if len(sys.argv) > 1 else '.'
+base = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), 'shaders')
 L = 64
 for K in (1,2,3,4,8,16):
     s = []

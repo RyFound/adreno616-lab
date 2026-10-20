@@ -53,7 +53,7 @@ def emit(ACC, FMAS):
     s.append('}')
     return '\n'.join(s) + '\n'
 
-base = sys.argv[1] if len(sys.argv) > 1 else '.'
+base = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), 'shaders')
 for name, acc, fmas in CELLS:
     p = os.path.join(base, name + '.comp')
     open(p, 'w').write(emit(acc, fmas))

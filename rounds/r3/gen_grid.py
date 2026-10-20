@@ -2,7 +2,7 @@
 # Generate vkopt shaders for a full (L x K) grid from ONE identical template.
 # Uniform template => uniform SPIR-V provenance (control from r2).
 import sys, os
-base = sys.argv[1] if len(sys.argv) > 1 else '.'
+base = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), 'shaders')
 LS = [32, 64, 96, 128]
 KS = [1, 2, 3, 4, 8, 16]
 for L in LS:

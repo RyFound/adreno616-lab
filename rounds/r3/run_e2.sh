@@ -5,13 +5,13 @@ cd "$(dirname "$0")"
 LK=/apex/com.android.runtime/bin/linker64
 export LD_LIBRARY_PATH=/vendor/lib64:/system/lib64
 N=65536; IT=2000; R=3; RAMP=500
-out=e2_lsweep.raw.txt
+out=logs/e2_lsweep.raw.txt
 rm -f $out
 for L in 32 64 128; do
   for K in 1 2 3 4; do
-    spv=/home/han/adreno616-lab/rounds/r3/vk_g_L${L}_K${K}.spv
+    spv=shaders/vk_g_L${L}_K${K}.spv
     for r in 1 2 3; do
-      VKOPT_SPV=$spv VKOPT_RAMP=$RAMP $LK /home/han/adreno616-lab/build/vkopt $IT $N $R $L $K ramp 2>&1 | grep -E 'GATE|RESULT' >> $out
+      VKOPT_SPV=$spv VKOPT_RAMP=$RAMP $LK ../../build/r3/vkopt $IT $N $R $L $K ramp 2>&1 | grep -E 'GATE|RESULT' >> $out
     done
   done
 done

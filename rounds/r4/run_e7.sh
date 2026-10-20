@@ -6,15 +6,15 @@ cd "$(dirname "$0")"
 LK=/apex/com.android.runtime/bin/linker64
 export LD_LIBRARY_PATH=/vendor/lib64:/system/lib64
 RAMP=500; REPS=3
-out=e7_kcurve.raw.txt
+out=logs/e7_kcurve.raw.txt
 rm -f $out
 
 run_cell() {  # iters n L K tag
   local IT=$1 N=$2 L=$3 K=$4 TAG=$5
-  local spv=/home/han/adreno616-lab/rounds/r3/vk_g_L${L}_K${K}.spv
+  local spv=../r3/shaders/vk_g_L${L}_K${K}.spv
   for r in 1 2 3; do
     VKOPT_SPV=$spv VKOPT_RAMP=$RAMP \
-      $LK /home/han/adreno616-lab/build/vkopt8 $IT $N $REPS $L $K ramp 2>&1 \
+      $LK ../../build/r4/vkopt8 $IT $N $REPS $L $K ramp 2>&1 \
       | grep -E 'GATE|RESULT|REP ' | sed "s/^/[$TAG r$r] /" >> $out
   done
 }
