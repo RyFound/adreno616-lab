@@ -1,0 +1,10 @@
+A_fma BINARY_SIZE rc=0 size=5272
+A_fma BINARY_DUMP rc=0 file=/data/local/tmp/oclbin_A_fma.bin nonzero=2140 head=200000000a0000000200000002000000
+A_fma PRIVATE_MEM=176 WORKGROUP_MAX=1024
+B_muladd BINARY_SIZE rc=0 size=2616
+B_muladd BINARY_DUMP rc=0 file=/data/local/tmp/oclbin_B_muladd.bin nonzero=601 head=200000000a0000000200000002000000
+B_muladd PRIVATE_MEM=64 WORKGROUP_MAX=1024
+C_mad BINARY_SIZE rc=0 size=2616
+C_mad BINARY_DUMP rc=0 file=/data/local/tmp/oclbin_C_mad.bin nonzero=601 head=200000000a0000000200000002000000
+C_mad PRIVATE_MEM=64 WORKGROUP_MAX=1024
+DONE

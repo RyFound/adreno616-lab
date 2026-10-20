@@ -1,0 +1,36 @@
+### CFG n=iters=65536 2000 1791388135
+WS run=0 n=65536 iters=2000 wall_s=7.092506 gflops=0.14784 kernel_ns=4192000 cur_freq=610000000
+GATE run=0 C0=2000 expect=2000 PASS
+WS run=1 n=65536 iters=2000 wall_s=6.995608 gflops=0.14989 kernel_ns=658944 cur_freq=610000000
+GATE run=1 C0=2000 expect=2000 PASS
+WS run=2 n=65536 iters=2000 wall_s=7.113152 gflops=0.14741 kernel_ns=365056 cur_freq=610000000
+GATE run=2 C0=2000 expect=2000 PASS
+DONE
+rc=0
+### CFG n=iters=65536 200 1791388157
+WS run=0 n=65536 iters=200 wall_s=0.714523 gflops=0.14675 kernel_ns=3899136 cur_freq=610000000
+GATE run=0 C0=200 expect=200 PASS
+WS run=1 n=65536 iters=200 wall_s=0.710553 gflops=0.14757 kernel_ns=609792 cur_freq=610000000
+GATE run=1 C0=200 expect=200 PASS
+WS run=2 n=65536 iters=200 wall_s=0.714415 gflops=0.14677 kernel_ns=730880 cur_freq=610000000
+GATE run=2 C0=200 expect=200 PASS
+DONE
+rc=0
+### CFG n=iters=65536 20 1791388159
+WS run=0 n=65536 iters=20 wall_s=0.077749 gflops=0.13487 kernel_ns=4088832 cur_freq=610000000
+GATE run=0 C0=20 expect=20 PASS
+WS run=1 n=65536 iters=20 wall_s=0.073535 gflops=0.14260 kernel_ns=180992 cur_freq=610000000
+GATE run=1 C0=20 expect=20 PASS
+WS run=2 n=65536 iters=20 wall_s=0.074109 gflops=0.14149 kernel_ns=833024 cur_freq=610000000
+GATE run=2 C0=20 expect=20 PASS
+DONE
+rc=0
+### CFG n=iters=6553 2000 1791388160
+WS run=0 n=6553 iters=2000 wall_s=0.716628 gflops=0.14631 kernel_ns=3703040 cur_freq=610000000
+GATE run=0 C0=2000 expect=2000 PASS
+WS run=1 n=6553 iters=2000 wall_s=0.713811 gflops=0.14688 kernel_ns=390912 cur_freq=610000000
+GATE run=1 C0=2000 expect=2000 PASS
+WS run=2 n=6553 iters=2000 wall_s=0.715957 gflops=0.14644 kernel_ns=262912 cur_freq=610000000
+GATE run=2 C0=2000 expect=2000 PASS
+DONE
+rc=0

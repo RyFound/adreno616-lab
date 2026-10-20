@@ -1,0 +1,16 @@
+#version 450
+layout(local_size_x = 64) in;
+layout(set = 0, binding = 0) buffer A { vec4 a[]; };
+layout(set = 0, binding = 1) buffer B { vec4 b[]; };
+layout(set = 0, binding = 2) buffer C { vec4 c[]; };
+layout(push_constant) uniform PC { int iters; } pc;
+void main() {
+    uint g = gl_GlobalInvocationID.x;
+    vec4 x = a[g], y = b[g];
+    vec4 z0=c[g],z1=c[g],z2=c[g],z3=c[g],z4=c[g],z5=c[g],z6=c[g],z7=c[g];
+    for (int i = 0; i < pc.iters; i++) {
+        z0=fma(x,y,z0); z1=fma(x,y,z1); z2=fma(x,y,z2); z3=fma(x,y,z3);
+        z4=fma(x,y,z4); z5=fma(x,y,z5); z6=fma(x,y,z6); z7=fma(x,y,z7);
+    }
+    c[g] = z0+z1+z2+z3+z4+z5+z6+z7;
+}

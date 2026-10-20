@@ -1,0 +1,13 @@
+OK loaded libOpenCL.so
+clGetPlatformIDs -> 0 platforms=1
+Platform[0]: QUALCOMM Snapdragon(TM)
+clGetDeviceIDs(GPU) -> 0 devices=1
+Device: QUALCOMM Adreno(TM)
+  compute_units=1 max_clock=1 MHz global_mem=1802 MB
+Kernel built OK
+
+=== OpenCL FMA bench ===
+n=4096 f4  inner=1000  iters=3  wg=64
+wall=0.6513 s
+FMA ops=4.915e+07
+GFLOPS(fma=2flop)=0.15

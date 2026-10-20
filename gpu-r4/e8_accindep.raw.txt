@@ -1,0 +1,27 @@
+[B2 r1] GATERES submit=0 wait=0
+[B2 r1] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=64 R=1 PASS
+[B2 r1] RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.041643 gflops_wall=75.541 cur_freq_after=610000000
+[B2 r2] GATERES submit=0 wait=0
+[B2 r2] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=64 R=1 PASS
+[B2 r2] RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.041723 gflops_wall=75.396 cur_freq_after=610000000
+[B2 r3] GATERES submit=0 wait=0
+[B2 r3] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=64 R=1 PASS
+[B2 r3] RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.041760 gflops_wall=75.329 cur_freq_after=610000000
+[B3 r1] GATERES submit=0 wait=0
+[B3 r1] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=64 R=1 PASS
+[B3 r1] RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.055534 gflops_wall=113.290 cur_freq_after=610000000
+[B3 r2] GATERES submit=0 wait=0
+[B3 r2] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=64 R=1 PASS
+[B3 r2] RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.056097 gflops_wall=112.153 cur_freq_after=610000000
+[B3 r3] GATERES submit=0 wait=0
+[B3 r3] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=64 R=1 PASS
+[B3 r3] RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.056311 gflops_wall=111.728 cur_freq_after=610000000
+[K1 r1] GATERES submit=0 wait=0
+[K1 r1] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=64 R=1 PASS
+[K1 r1] RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.038660 gflops_wall=81.368 cur_freq_after=610000000
+[K1 r2] GATERES submit=0 wait=0
+[K1 r2] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=64 R=1 PASS
+[K1 r2] RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.037974 gflops_wall=82.838 cur_freq_after=610000000
+[K1 r3] GATERES submit=0 wait=0
+[K1 r3] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=64 R=1 PASS
+[K1 r3] RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.039043 gflops_wall=80.571 cur_freq_after=610000000

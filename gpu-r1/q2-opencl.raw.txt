@@ -1,0 +1,25 @@
+### REP=1 Q2 n=65536 reps=3 1791387675
+CLDEV name=QUALCOMM Adreno(TM) type=0x0 maxcu=1 maxmhz=1 nplat=1 ndev=1
+GATE cell=l64a1 C0=2000 expect=2000 PASS
+RESULT idx=0 cell=l64a1 n=65536 iters=2000 reps=3 L=64 K=1 wall_s=6.969291 gflops_wall=0.150 cur_freq=610000000
+RESULT idx=1 cell=l64a1 n=65536 iters=2000 reps=3 L=64 K=1 wall_s=6.903131 gflops_wall=0.152 cur_freq=610000000
+RESULT idx=2 cell=l64a1 n=65536 iters=2000 reps=3 L=64 K=1 wall_s=6.922866 gflops_wall=0.151 cur_freq=610000000
+GATE cell=l64a2 C0=2000 expect=2000 PASS
+RESULT idx=3 cell=l64a2 n=65536 iters=2000 reps=3 L=64 K=2 wall_s=7.070965 gflops_wall=0.148 cur_freq=610000000
+RESULT idx=4 cell=l64a2 n=65536 iters=2000 reps=3 L=64 K=2 wall_s=7.083051 gflops_wall=0.148 cur_freq=610000000
+RESULT idx=5 cell=l64a2 n=65536 iters=2000 reps=3 L=64 K=2 wall_s=7.052129 gflops_wall=0.149 cur_freq=610000000
+GATE cell=l64a4 C0=2000 expect=2000 PASS
+RESULT idx=6 cell=l64a4 n=65536 iters=2000 reps=3 L=64 K=4 wall_s=7.142070 gflops_wall=0.147 cur_freq=610000000
+RESULT idx=7 cell=l64a4 n=65536 iters=2000 reps=3 L=64 K=4 wall_s=7.113881 gflops_wall=0.147 cur_freq=610000000
+RESULT idx=8 cell=l64a4 n=65536 iters=2000 reps=3 L=64 K=4 wall_s=6.984141 gflops_wall=0.150 cur_freq=610000000
+GATE cell=l64a8 C0=2000 expect=2000 PASS
+RESULT idx=9 cell=l64a8 n=65536 iters=2000 reps=3 L=64 K=8 wall_s=7.050136 gflops_wall=0.149 cur_freq=610000000
+RESULT idx=10 cell=l64a8 n=65536 iters=2000 reps=3 L=64 K=8 wall_s=7.099623 gflops_wall=0.148 cur_freq=610000000
+RESULT idx=11 cell=l64a8 n=65536 iters=2000 reps=3 L=64 K=8 wall_s=7.119161 gflops_wall=0.147 cur_freq=610000000
+GATE cell=l128a1 C0=2000 expect=2000 PASS
+RESULT idx=12 cell=l128a1 n=65536 iters=2000 reps=3 L=128 K=1 wall_s=11.691300 gflops_wall=0.090 cur_freq=610000000
+RESULT idx=13 cell=l128a1 n=65536 iters=2000 reps=3 L=128 K=1 wall_s=11.598921 gflops_wall=0.090 cur_freq=610000000
+RESULT idx=14 cell=l128a1 n=65536 iters=2000 reps=3 L=128 K=1 wall_s=11.526239 gflops_wall=0.091 cur_freq=610000000
+GATE cell=l128a2 C0=2000 expect=2000 PASS
+RESULT idx=15 cell=l128a2 n=65536 iters=2000 reps=3 L=128 K=2 wall_s=11.956781 gflops_wall=0.088 cur_freq=610000000
+RESULT idx=16 cell=l128a2 n=65536 iters=2000 reps=3 L=128 K=2 wall_s=11.975820 gflops_wall=0.088 cur_freq=610000000

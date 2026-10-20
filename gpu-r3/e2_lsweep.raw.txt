@@ -1,0 +1,73 @@
+GATE C0=2000 expect=2000 K=1 L=32 R=1 PASS
+RESULT mode=ramp L=32 K=1 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.073879 gflops_wall=42.580 cur_freq_after=610000000
+GATE C0=2000 expect=2000 K=1 L=32 R=1 PASS
+RESULT mode=ramp L=32 K=1 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.074524 gflops_wall=42.211 cur_freq_after=610000000
+GATE C0=2000 expect=2000 K=1 L=32 R=1 PASS
+RESULT mode=ramp L=32 K=1 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.074023 gflops_wall=42.496 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=32 R=1 PASS
+RESULT mode=ramp L=32 K=2 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.109235 gflops_wall=57.596 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=32 R=1 PASS
+RESULT mode=ramp L=32 K=2 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.109263 gflops_wall=57.581 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=32 R=1 PASS
+RESULT mode=ramp L=32 K=2 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.109837 gflops_wall=57.280 cur_freq_after=610000000
+GATE C0=6000 expect=6000 K=3 L=32 R=1 PASS
+RESULT mode=ramp L=32 K=3 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.220134 gflops_wall=42.870 cur_freq_after=610000000
+GATE C0=6000 expect=6000 K=3 L=32 R=1 PASS
+RESULT mode=ramp L=32 K=3 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.219497 gflops_wall=42.995 cur_freq_after=610000000
+GATE C0=6000 expect=6000 K=3 L=32 R=1 PASS
+RESULT mode=ramp L=32 K=3 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.220164 gflops_wall=42.864 cur_freq_after=610000000
+GATE C0=8000 expect=8000 K=4 L=32 R=1 PASS
+RESULT mode=ramp L=32 K=4 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.287922 gflops_wall=43.702 cur_freq_after=610000000
+GATE C0=8000 expect=8000 K=4 L=32 R=1 PASS
+RESULT mode=ramp L=32 K=4 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.287980 gflops_wall=43.694 cur_freq_after=610000000
+GATE C0=8000 expect=8000 K=4 L=32 R=1 PASS
+RESULT mode=ramp L=32 K=4 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.288832 gflops_wall=43.565 cur_freq_after=610000000
+GATE C0=2000 expect=2000 K=1 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.038649 gflops_wall=81.392 cur_freq_after=610000000
+GATE C0=2000 expect=2000 K=1 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.040219 gflops_wall=78.215 cur_freq_after=610000000
+GATE C0=2000 expect=2000 K=1 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.038414 gflops_wall=81.889 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.056478 gflops_wall=111.397 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.056012 gflops_wall=112.324 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.055121 gflops_wall=114.139 cur_freq_after=610000000
+GATE C0=6000 expect=6000 K=3 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=3 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.110963 gflops_wall=85.048 cur_freq_after=610000000
+GATE C0=6000 expect=6000 K=3 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=3 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.111519 gflops_wall=84.624 cur_freq_after=610000000
+GATE C0=6000 expect=6000 K=3 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=3 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.112304 gflops_wall=84.032 cur_freq_after=610000000
+GATE C0=8000 expect=8000 K=4 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=4 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.145746 gflops_wall=86.334 cur_freq_after=610000000
+GATE C0=8000 expect=8000 K=4 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=4 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.145548 gflops_wall=86.452 cur_freq_after=610000000
+GATE C0=8000 expect=8000 K=4 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=4 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.145977 gflops_wall=86.198 cur_freq_after=610000000
+GATE C0=2000 expect=2000 K=1 L=128 R=1 PASS
+RESULT mode=ramp L=128 K=1 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.044052 gflops_wall=71.410 cur_freq_after=610000000
+GATE C0=2000 expect=2000 K=1 L=128 R=1 PASS
+RESULT mode=ramp L=128 K=1 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.043533 gflops_wall=72.261 cur_freq_after=610000000
+GATE C0=2000 expect=2000 K=1 L=128 R=1 PASS
+RESULT mode=ramp L=128 K=1 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.044064 gflops_wall=71.391 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=128 R=1 PASS
+RESULT mode=ramp L=128 K=2 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.061117 gflops_wall=102.941 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=128 R=1 PASS
+RESULT mode=ramp L=128 K=2 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.061073 gflops_wall=103.015 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=128 R=1 PASS
+RESULT mode=ramp L=128 K=2 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.060807 gflops_wall=103.467 cur_freq_after=610000000
+GATE C0=6000 expect=6000 K=3 L=128 R=1 PASS
+RESULT mode=ramp L=128 K=3 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.119896 gflops_wall=78.711 cur_freq_after=610000000
+GATE C0=6000 expect=6000 K=3 L=128 R=1 PASS
+RESULT mode=ramp L=128 K=3 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.121060 gflops_wall=77.954 cur_freq_after=610000000
+GATE C0=6000 expect=6000 K=3 L=128 R=1 PASS
+RESULT mode=ramp L=128 K=3 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.120823 gflops_wall=78.107 cur_freq_after=610000000
+GATE C0=8000 expect=8000 K=4 L=128 R=1 PASS
+RESULT mode=ramp L=128 K=4 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.157943 gflops_wall=79.667 cur_freq_after=610000000
+GATE C0=8000 expect=8000 K=4 L=128 R=1 PASS
+RESULT mode=ramp L=128 K=4 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.159010 gflops_wall=79.133 cur_freq_after=610000000
+GATE C0=8000 expect=8000 K=4 L=128 R=1 PASS
+RESULT mode=ramp L=128 K=4 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.158622 gflops_wall=79.326 cur_freq_after=610000000
+E2_DONE

@@ -1,0 +1,7 @@
+OK loaded libOpenCL.so
+clGetPlatformIDs -> 0 platforms=1
+Platform[0]: QUALCOMM Snapdragon(TM)
+clGetDeviceIDs(GPU) -> 0 devices=1
+Device: QUALCOMM Adreno(TM)
+  compute_units=1 max_clock=1 MHz global_mem=1802 MB
+Kernel built OK

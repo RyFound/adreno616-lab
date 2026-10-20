@@ -1,0 +1,157 @@
+[r5_k1 r1] GATERES submit=0 wait=0
+[r5_k1 r1] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=64 R=1 PASS
+[r5_k1 r1] REP i=0 submit=0 wait=0 wall_s=0.012815
+[r5_k1 r1] REP i=1 submit=0 wait=0 wall_s=0.012724
+[r5_k1 r1] REP i=2 submit=0 wait=0 wall_s=0.013251
+[r5_k1 r1] REP i=3 submit=0 wait=0 wall_s=0.012825
+[r5_k1 r1] REP i=4 submit=0 wait=0 wall_s=0.012995
+[r5_k1 r1] REP i=5 submit=0 wait=0 wall_s=0.012839
+[r5_k1 r1] REP i=6 submit=0 wait=0 wall_s=0.012631
+[r5_k1 r1] REP i=7 submit=0 wait=0 wall_s=0.012464
+[r5_k1 r1] REP i=8 submit=0 wait=0 wall_s=0.012698
+[r5_k1 r1] REP i=9 submit=0 wait=0 wall_s=0.012536
+[r5_k1 r1] RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.129424 gflops_wall=81.019 cur_freq_after=610000000
+[r5_k1 r2] GATERES submit=0 wait=0
+[r5_k1 r2] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=64 R=1 PASS
+[r5_k1 r2] REP i=0 submit=0 wait=0 wall_s=0.012864
+[r5_k1 r2] REP i=1 submit=0 wait=0 wall_s=0.012939
+[r5_k1 r2] REP i=2 submit=0 wait=0 wall_s=0.012634
+[r5_k1 r2] REP i=3 submit=0 wait=0 wall_s=0.012486
+[r5_k1 r2] REP i=4 submit=0 wait=0 wall_s=0.012877
+[r5_k1 r2] REP i=5 submit=0 wait=0 wall_s=0.012736
+[r5_k1 r2] REP i=6 submit=0 wait=0 wall_s=0.012705
+[r5_k1 r2] REP i=7 submit=0 wait=0 wall_s=0.012405
+[r5_k1 r2] REP i=8 submit=0 wait=0 wall_s=0.012642
+[r5_k1 r2] REP i=9 submit=0 wait=0 wall_s=0.012827
+[r5_k1 r2] RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.128057 gflops_wall=81.884 cur_freq_after=610000000
+[r5_k1 r3] GATERES submit=0 wait=0
+[r5_k1 r3] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=64 R=1 PASS
+[r5_k1 r3] REP i=0 submit=0 wait=0 wall_s=0.012560
+[r5_k1 r3] REP i=1 submit=0 wait=0 wall_s=0.014029
+[r5_k1 r3] REP i=2 submit=0 wait=0 wall_s=0.012663
+[r5_k1 r3] REP i=3 submit=0 wait=0 wall_s=0.012592
+[r5_k1 r3] REP i=4 submit=0 wait=0 wall_s=0.012506
+[r5_k1 r3] REP i=5 submit=0 wait=0 wall_s=0.012415
+[r5_k1 r3] REP i=6 submit=0 wait=0 wall_s=0.013198
+[r5_k1 r3] REP i=7 submit=0 wait=0 wall_s=0.013011
+[r5_k1 r3] REP i=8 submit=0 wait=0 wall_s=0.012507
+[r5_k1 r3] REP i=9 submit=0 wait=0 wall_s=0.012422
+[r5_k1 r3] RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.128897 gflops_wall=81.350 cur_freq_after=610000000
+[r5_k2 r1] GATERES submit=0 wait=0
+[r5_k2 r1] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=64 R=1 PASS
+[r5_k2 r1] REP i=0 submit=0 wait=0 wall_s=0.018665
+[r5_k2 r1] REP i=1 submit=0 wait=0 wall_s=0.018917
+[r5_k2 r1] REP i=2 submit=0 wait=0 wall_s=0.018675
+[r5_k2 r1] REP i=3 submit=0 wait=0 wall_s=0.018326
+[r5_k2 r1] REP i=4 submit=0 wait=0 wall_s=0.018601
+[r5_k2 r1] REP i=5 submit=0 wait=0 wall_s=0.018419
+[r5_k2 r1] REP i=6 submit=0 wait=0 wall_s=0.018946
+[r5_k2 r1] REP i=7 submit=0 wait=0 wall_s=0.018875
+[r5_k2 r1] REP i=8 submit=0 wait=0 wall_s=0.018574
+[r5_k2 r1] REP i=9 submit=0 wait=0 wall_s=0.019053
+[r5_k2 r1] RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.188178 gflops_wall=111.445 cur_freq_after=610000000
+[r5_k2 r2] GATERES submit=0 wait=0
+[r5_k2 r2] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=64 R=1 PASS
+[r5_k2 r2] REP i=0 submit=0 wait=0 wall_s=0.018558
+[r5_k2 r2] REP i=1 submit=0 wait=0 wall_s=0.018859
+[r5_k2 r2] REP i=2 submit=0 wait=0 wall_s=0.018638
+[r5_k2 r2] REP i=3 submit=0 wait=0 wall_s=0.019025
+[r5_k2 r2] REP i=4 submit=0 wait=0 wall_s=0.018846
+[r5_k2 r2] REP i=5 submit=0 wait=0 wall_s=0.018989
+[r5_k2 r2] REP i=6 submit=0 wait=0 wall_s=0.018848
+[r5_k2 r2] REP i=7 submit=0 wait=0 wall_s=0.018766
+[r5_k2 r2] REP i=8 submit=0 wait=0 wall_s=0.019057
+[r5_k2 r2] REP i=9 submit=0 wait=0 wall_s=0.019064
+[r5_k2 r2] RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.190895 gflops_wall=109.859 cur_freq_after=610000000
+[r5_k2 r3] GATERES submit=0 wait=0
+[r5_k2 r3] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=64 R=1 PASS
+[r5_k2 r3] REP i=0 submit=0 wait=0 wall_s=0.018619
+[r5_k2 r3] REP i=1 submit=0 wait=0 wall_s=0.018534
+[r5_k2 r3] REP i=2 submit=0 wait=0 wall_s=0.018737
+[r5_k2 r3] REP i=3 submit=0 wait=0 wall_s=0.018623
+[r5_k2 r3] REP i=4 submit=0 wait=0 wall_s=0.018672
+[r5_k2 r3] REP i=5 submit=0 wait=0 wall_s=0.018551
+[r5_k2 r3] REP i=6 submit=0 wait=0 wall_s=0.018562
+[r5_k2 r3] REP i=7 submit=0 wait=0 wall_s=0.018579
+[r5_k2 r3] REP i=8 submit=0 wait=0 wall_s=0.018966
+[r5_k2 r3] REP i=9 submit=0 wait=0 wall_s=0.018594
+[r5_k2 r3] RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.188848 gflops_wall=111.050 cur_freq_after=610000000
+[r5_b5 r1] GATERES submit=0 wait=0
+[r5_b5 r1] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=64 R=1 PASS
+[r5_b5 r1] REP i=0 submit=0 wait=0 wall_s=0.022377
+[r5_b5 r1] REP i=1 submit=0 wait=0 wall_s=0.022424
+[r5_b5 r1] REP i=2 submit=0 wait=0 wall_s=0.022421
+[r5_b5 r1] REP i=3 submit=0 wait=0 wall_s=0.022393
+[r5_b5 r1] REP i=4 submit=0 wait=0 wall_s=0.022380
+[r5_b5 r1] REP i=5 submit=0 wait=0 wall_s=0.022321
+[r5_b5 r1] REP i=6 submit=0 wait=0 wall_s=0.022542
+[r5_b5 r1] REP i=7 submit=0 wait=0 wall_s=0.022609
+[r5_b5 r1] REP i=8 submit=0 wait=0 wall_s=0.022320
+[r5_b5 r1] REP i=9 submit=0 wait=0 wall_s=0.022807
+[r5_b5 r1] RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.227217 gflops_wall=92.297 cur_freq_after=610000000
+[r5_b5 r2] GATERES submit=0 wait=0
+[r5_b5 r2] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=64 R=1 PASS
+[r5_b5 r2] REP i=0 submit=0 wait=0 wall_s=0.022402
+[r5_b5 r2] REP i=1 submit=0 wait=0 wall_s=0.022533
+[r5_b5 r2] REP i=2 submit=0 wait=0 wall_s=0.022354
+[r5_b5 r2] REP i=3 submit=0 wait=0 wall_s=0.022540
+[r5_b5 r2] REP i=4 submit=0 wait=0 wall_s=0.022571
+[r5_b5 r2] REP i=5 submit=0 wait=0 wall_s=0.022334
+[r5_b5 r2] REP i=6 submit=0 wait=0 wall_s=0.022085
+[r5_b5 r2] REP i=7 submit=0 wait=0 wall_s=0.022315
+[r5_b5 r2] REP i=8 submit=0 wait=0 wall_s=0.022763
+[r5_b5 r2] REP i=9 submit=0 wait=0 wall_s=0.022487
+[r5_b5 r2] RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.225995 gflops_wall=92.796 cur_freq_after=610000000
+[r5_b5 r3] GATERES submit=0 wait=0
+[r5_b5 r3] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=64 R=1 PASS
+[r5_b5 r3] REP i=0 submit=0 wait=0 wall_s=0.022433
+[r5_b5 r3] REP i=1 submit=0 wait=0 wall_s=0.022106
+[r5_b5 r3] REP i=2 submit=0 wait=0 wall_s=0.022703
+[r5_b5 r3] REP i=3 submit=0 wait=0 wall_s=0.022663
+[r5_b5 r3] REP i=4 submit=0 wait=0 wall_s=0.022082
+[r5_b5 r3] REP i=5 submit=0 wait=0 wall_s=0.022107
+[r5_b5 r3] REP i=6 submit=0 wait=0 wall_s=0.022254
+[r5_b5 r3] REP i=7 submit=0 wait=0 wall_s=0.022337
+[r5_b5 r3] REP i=8 submit=0 wait=0 wall_s=0.022851
+[r5_b5 r3] REP i=9 submit=0 wait=0 wall_s=0.022663
+[r5_b5 r3] RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.225390 gflops_wall=93.046 cur_freq_after=610000000
+[r5_b4 r1] GATERES submit=0 wait=0
+[r5_b4 r1] GATE nbad=0 expect=8000 fmaxbad=-1 K=4 L=64 R=1 PASS
+[r5_b4 r1] REP i=0 submit=0 wait=0 wall_s=0.048619
+[r5_b4 r1] REP i=1 submit=0 wait=0 wall_s=0.048535
+[r5_b4 r1] REP i=2 submit=0 wait=0 wall_s=0.048500
+[r5_b4 r1] REP i=3 submit=0 wait=0 wall_s=0.048518
+[r5_b4 r1] REP i=4 submit=0 wait=0 wall_s=0.048730
+[r5_b4 r1] REP i=5 submit=0 wait=0 wall_s=0.048540
+[r5_b4 r1] REP i=6 submit=0 wait=0 wall_s=0.048747
+[r5_b4 r1] REP i=7 submit=0 wait=0 wall_s=0.048397
+[r5_b4 r1] REP i=8 submit=0 wait=0 wall_s=0.048414
+[r5_b4 r1] REP i=9 submit=0 wait=0 wall_s=0.048559
+[r5_b4 r1] RESULT mode=ramp L=64 K=4 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.486987 gflops_wall=86.128 cur_freq_after=610000000
+[r5_b4 r2] GATERES submit=0 wait=0
+[r5_b4 r2] GATE nbad=0 expect=8000 fmaxbad=-1 K=4 L=64 R=1 PASS
+[r5_b4 r2] REP i=0 submit=0 wait=0 wall_s=0.048575
+[r5_b4 r2] REP i=1 submit=0 wait=0 wall_s=0.048499
+[r5_b4 r2] REP i=2 submit=0 wait=0 wall_s=0.048559
+[r5_b4 r2] REP i=3 submit=0 wait=0 wall_s=0.048528
+[r5_b4 r2] REP i=4 submit=0 wait=0 wall_s=0.048643
+[r5_b4 r2] REP i=5 submit=0 wait=0 wall_s=0.048949
+[r5_b4 r2] REP i=6 submit=0 wait=0 wall_s=0.048747
+[r5_b4 r2] REP i=7 submit=0 wait=0 wall_s=0.048391
+[r5_b4 r2] REP i=8 submit=0 wait=0 wall_s=0.048292
+[r5_b4 r2] REP i=9 submit=0 wait=0 wall_s=0.048270
+[r5_b4 r2] RESULT mode=ramp L=64 K=4 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.487746 gflops_wall=85.994 cur_freq_after=610000000
+[r5_b4 r3] GATERES submit=0 wait=0
+[r5_b4 r3] GATE nbad=0 expect=8000 fmaxbad=-1 K=4 L=64 R=1 PASS
+[r5_b4 r3] REP i=0 submit=0 wait=0 wall_s=0.048973
+[r5_b4 r3] REP i=1 submit=0 wait=0 wall_s=0.049251
+[r5_b4 r3] REP i=2 submit=0 wait=0 wall_s=0.048640
+[r5_b4 r3] REP i=3 submit=0 wait=0 wall_s=0.048255
+[r5_b4 r3] REP i=4 submit=0 wait=0 wall_s=0.048662
+[r5_b4 r3] REP i=5 submit=0 wait=0 wall_s=0.048352
+[r5_b4 r3] REP i=6 submit=0 wait=0 wall_s=0.048146
+[r5_b4 r3] REP i=7 submit=0 wait=0 wall_s=0.048219
+[r5_b4 r3] REP i=8 submit=0 wait=0 wall_s=0.048985
+[r5_b4 r3] REP i=9 submit=0 wait=0 wall_s=0.048114
+[r5_b4 r3] RESULT mode=ramp L=64 K=4 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.486626 gflops_wall=86.192 cur_freq_after=610000000
+R5_DONE

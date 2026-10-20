@@ -1,0 +1,53 @@
+# ---------------------------------------------------------------------------
+# Allowlist-by-extension.
+#
+# Everything is ignored first, then only sources, docs and raw logs are
+# un-ignored. Rationale: this tree accumulated 39 extensionless aarch64 ELF
+# binaries and 55 .spv blobs. A denylist of binary names goes stale the moment
+# a new round adds `vkopt10`; an allowlist cannot leak a binary by omission.
+#
+# Consequence to be aware of: a NEW file type is ignored until it is added
+# below. If a file is missing from `git ls-files`, check this list first.
+# ---------------------------------------------------------------------------
+*
+!*/
+
+# --- sources ---------------------------------------------------------------
+!*.c
+!*.h
+!*.S
+!*.s
+!*.comp
+!*.py
+!*.sh
+!Makefile
+
+# --- docs ------------------------------------------------------------------
+!*.md
+!LICENSE
+!README*
+!.gitignore
+
+# --- evidence: raw logs, captured output, SPIR-V stat dumps -----------------
+!*.txt
+!*.out
+!*.json
+
+# --- explicitly NOT tracked (stated here so the intent is reviewable) ------
+# *.spv   compiled SPIR-V; regenerate with glslangValidator from *.comp
+# *.bin   OpenCL program binaries emitted by oclbin; regenerate by running it
+# *.264   third-party H.264 test vector with unclear licensing
+# no-ext  built aarch64 binaries
+
+# --- local scratch ---------------------------------------------------------
+*.o
+*.so
+*.a
+*.d
+core
+core.*
+.env
+*.key
+*.pem
+bench.bin
+disk.bin

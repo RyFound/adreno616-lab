@@ -1,0 +1,21 @@
+#version 450
+// E8-B2: 2 accumulator LIVE, but only ONE fma per iteration.
+// a1 is loaded from buffer y (=1.0) so it cannot be folded away, but it is
+// never updated inside the loop. Stored value = a0 + a1 - 1.0 = iters.
+// Run with K=1 so harness gate (expect = iters*K*R) matches exactly.
+layout(local_size_x = 64) in;
+layout(std430, binding = 0) buffer X { vec4 x[]; };
+layout(std430, binding = 1) buffer Y { vec4 y[]; };
+layout(std430, binding = 2) buffer Z { vec4 z[]; };
+layout(push_constant) uniform PC { uint iters; } pc;
+void main() {
+    uint i = gl_GlobalInvocationID.x;
+    vec4 xv = x[i];
+    vec4 yv = y[i];
+    vec4 a0 = vec4(0.0);
+    vec4 a1 = yv;
+    for (uint k = 0u; k < pc.iters; k++) {
+        a0 = a0 * xv + yv;
+    }
+    z[i] = a0 + a1 - vec4(1.0);
+}

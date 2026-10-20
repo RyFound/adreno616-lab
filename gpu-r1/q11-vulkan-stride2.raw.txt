@@ -1,0 +1,14 @@
+### baseline K=2 L=64 R=1 (expect ~112.7)
+GATE C0=4000 expect=4000 K=2 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.187576 gflops_wall=111.803 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.187373 gflops_wall=111.924 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.186572 gflops_wall=112.405 cur_freq_after=610000000
+### grid-stride D=2 (K=1, DIV=2, expect C0==iters)
+GATE C0=2000 expect=2000 K=1 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=10 gx=512 ramp=500 wall_s=0.156053 gflops_wall=67.193 cur_freq_after=610000000
+GATE C0=2000 expect=2000 K=1 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=10 gx=512 ramp=500 wall_s=0.156588 gflops_wall=66.964 cur_freq_after=610000000
+GATE C0=2000 expect=2000 K=1 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=10 gx=512 ramp=500 wall_s=0.154615 gflops_wall=67.818 cur_freq_after=610000000

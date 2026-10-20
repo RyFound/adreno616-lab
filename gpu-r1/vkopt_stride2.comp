@@ -1,0 +1,26 @@
+#version 450
+// Grid-stride D=2: each work-item owns TWO independent vec4 elements.
+// ILP per work-item = 2 chains (same as K=2), but TWO separate x,y pairs live
+// in registers instead of one shared pair -> higher register pressure.
+// Gate: element 0 starts at 0 and runs iters times -> C0 == iters.
+// Grid must be n/2 (harness divides via VKOPT_DIV).
+layout(local_size_x = 64) in;
+layout(std430, binding = 0) buffer X { vec4 x[]; };
+layout(std430, binding = 1) buffer Y { vec4 y[]; };
+layout(std430, binding = 2) buffer Z { vec4 z[]; };
+layout(push_constant) uniform PC { uint iters; } pc;
+void main() {
+    uint g = gl_GlobalInvocationID.x;
+    uint i0 = g * 2u;
+    uint i1 = i0 + 1u;
+    vec4 x0 = x[i0]; vec4 y0 = y[i0];
+    vec4 x1 = x[i1]; vec4 y1 = y[i1];
+    vec4 z0 = vec4(0.0);
+    vec4 z1 = vec4(0.0);
+    for (uint k = 0u; k < pc.iters; k++) {
+        z0 = z0 * x0 + y0;
+        z1 = z1 * x1 + y1;
+    }
+    z[i0] = z0;
+    z[i1] = z1;
+}

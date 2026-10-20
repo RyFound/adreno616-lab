@@ -1,0 +1,33 @@
+=== A: iters=1 n=65536 ===
+OK loaded libOpenCL.so
+clGetPlatformIDs -> 0 platforms=1
+Platform[0]: QUALCOMM Snapdragon(TM)
+clGetDeviceIDs(GPU) -> 0 devices=1
+Device: QUALCOMM Adreno(TM)
+  compute_units=1 max_clock=1 MHz global_mem=1802 MB
+Kernel built OK
+
+=== OpenCL FMA bench ===
+n=65536 f4  inner=1000  iters=1  wg=1024
+wall=3.5693 s
+FMA ops=2.621e+08
+GFLOPS(fma=2flop)=0.15
+rcA=0
+=== B: iters=1 n=1048576 (16x work) ===
+OK loaded libOpenCL.so
+clGetPlatformIDs -> 0 platforms=1
+Platform[0]: QUALCOMM Snapdragon(TM)
+clGetDeviceIDs(GPU) -> 0 devices=1
+Device: QUALCOMM Adreno(TM)
+  compute_units=1 max_clock=1 MHz global_mem=1802 MB
+Kernel built OK
+rcB=124
+=== C: iters=10 n=1048576 ===
+OK loaded libOpenCL.so
+clGetPlatformIDs -> 0 platforms=1
+Platform[0]: QUALCOMM Snapdragon(TM)
+clGetDeviceIDs(GPU) -> 0 devices=1
+Device: QUALCOMM Adreno(TM)
+  compute_units=1 max_clock=1 MHz global_mem=1802 MB
+Kernel built OK
+rcC=124

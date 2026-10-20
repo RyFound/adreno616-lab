@@ -1,0 +1,24 @@
+### K=2 R=1 (baseline, expect ~112.7)
+GATE C0=4000 expect=4000 K=2 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.186632 gflops_wall=112.368 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.186234 gflops_wall=112.608 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.186622 gflops_wall=112.374 cur_freq_after=610000000
+### K=2 R=16 (batch, accumulating shader)
+DISPATCHES_RECORDED 16
+GATE C0=64000 expect=64000 K=2 L=64 R=16 PASS
+RESULT mode=ramp L=64 K=2 R=16 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=3.989267 gflops_wall=84.112 cur_freq_after=610000000
+DISPATCHES_RECORDED 16
+GATE C0=64000 expect=64000 K=2 L=64 R=16 PASS
+RESULT mode=ramp L=64 K=2 R=16 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=3.989336 gflops_wall=84.110 cur_freq_after=610000000
+DISPATCHES_RECORDED 16
+GATE C0=64000 expect=64000 K=2 L=64 R=16 PASS
+RESULT mode=ramp L=64 K=2 R=16 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=3.990760 gflops_wall=84.080 cur_freq_after=610000000
+### K=1 R=16 (r1 repro, batch shader not used -> gate mismatch expected)
+GATE C0=4000 expect=4000 K=2 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.256799 gflops_wall=81.665 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.259964 gflops_wall=80.671 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.258782 gflops_wall=81.039 cur_freq_after=610000000

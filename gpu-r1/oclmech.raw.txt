@@ -1,0 +1,13 @@
+A_vec4_fma GATE C0=2000 expect=2000 PASS
+A_vec4_fma opts="" reps=10 wall_s=70.124135 gflops=0.150 freq=610000000
+B_vec4_muladd GATE C0=2000 expect=2000 PASS
+B_vec4_muladd opts="" reps=10 wall_s=0.104611 gflops=100.236 freq=610000000
+C_vec4_mad GATE C0=2000 expect=2000 PASS
+C_vec4_mad opts="" reps=10 wall_s=0.104762 gflops=100.092 freq=610000000
+D_vec4_fma_fast GATE C0=2000 expect=2000 PASS
+D_vec4_fma_fast opts="-cl-fast-relaxed-math" reps=10 wall_s=69.532484 gflops=0.151 freq=610000000
+E_scalar_muladd GATE C0=2000 expect=2000 PASS
+E_scalar_muladd opts="" reps=10 wall_s=0.070153 gflops=37.367 freq=610000000
+F_scalar_fma GATE C0=2000 expect=2000 PASS
+F_scalar_fma opts="" reps=10 wall_s=3.405955 gflops=0.770 freq=610000000
+DONE

@@ -1,0 +1,22 @@
+=== K-curve L=64 n=65536 ===
+GATE C0=2000 expect=2000 K=1 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.124957 gflops_wall=83.915 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.187014 gflops_wall=112.139 cur_freq_after=610000000
+GATE C0=6000 expect=6000 K=3 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=3 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.370781 gflops_wall=84.841 cur_freq_after=610000000
+GATE C0=8000 expect=8000 K=4 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=4 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.483910 gflops_wall=86.675 cur_freq_after=610000000
+GATE C0=16000 expect=16000 K=8 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=8 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=0.975459 gflops_wall=85.997 cur_freq_after=610000000
+GATE C0=32000 expect=32000 K=16 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=16 R=1 n=65536 iters=2000 reps=10 gx=1024 ramp=500 wall_s=1.903980 gflops_wall=88.117 cur_freq_after=610000000
+=== N-sweep L=64 K=1,K=2 ===
+GATE C0=2000 expect=2000 K=1 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=1 R=1 n=262144 iters=2000 reps=10 gx=4096 ramp=500 wall_s=0.482588 gflops_wall=86.913 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=2 R=1 n=262144 iters=2000 reps=10 gx=4096 ramp=500 wall_s=0.718563 gflops_wall=116.741 cur_freq_after=610000000
+GATE C0=2000 expect=2000 K=1 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=1 R=1 n=1048576 iters=2000 reps=10 gx=16384 ramp=500 wall_s=1.898568 gflops_wall=88.368 cur_freq_after=610000000
+GATE C0=4000 expect=4000 K=2 L=64 R=1 PASS
+RESULT mode=ramp L=64 K=2 R=1 n=1048576 iters=2000 reps=10 gx=16384 ramp=500 wall_s=2.946485 gflops_wall=113.880 cur_freq_after=610000000

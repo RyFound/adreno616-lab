@@ -1,0 +1,7 @@
+### coalesced grid-stride D=2 x3
+GATE C0=2000 expect=2000 stride=32768 D=2 PASS
+RESULT L=64 D=2 n=65536 iters=2000 reps=10 gx=512 wall_s=0.156813 gflops_wall=66.868 cur_freq_after=610000000
+GATE C0=2000 expect=2000 stride=32768 D=2 PASS
+RESULT L=64 D=2 n=65536 iters=2000 reps=10 gx=512 wall_s=0.156808 gflops_wall=66.870 cur_freq_after=610000000
+GATE C0=2000 expect=2000 stride=32768 D=2 PASS
+RESULT L=64 D=2 n=65536 iters=2000 reps=10 gx=512 wall_s=0.155349 gflops_wall=67.498 cur_freq_after=610000000

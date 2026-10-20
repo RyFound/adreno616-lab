@@ -1,0 +1,211 @@
+### E7a: K-curve at L=64, n=65536 (reproduce r3)
+[E7a_L64 r1] GATERES submit=0 wait=0
+[E7a_L64 r1] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=64 R=1 PASS
+[E7a_L64 r1] REP i=0 submit=0 wait=0 wall_s=0.012577
+[E7a_L64 r1] REP i=1 submit=0 wait=0 wall_s=0.012690
+[E7a_L64 r1] REP i=2 submit=0 wait=0 wall_s=0.012396
+[E7a_L64 r1] RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.038456 gflops_wall=81.801 cur_freq_after=610000000
+[E7a_L64 r2] GATERES submit=0 wait=0
+[E7a_L64 r2] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=64 R=1 PASS
+[E7a_L64 r2] REP i=0 submit=0 wait=0 wall_s=0.012944
+[E7a_L64 r2] REP i=1 submit=0 wait=0 wall_s=0.013101
+[E7a_L64 r2] REP i=2 submit=0 wait=0 wall_s=0.012464
+[E7a_L64 r2] RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.039284 gflops_wall=80.076 cur_freq_after=610000000
+[E7a_L64 r3] GATERES submit=0 wait=0
+[E7a_L64 r3] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=64 R=1 PASS
+[E7a_L64 r3] REP i=0 submit=0 wait=0 wall_s=0.012611
+[E7a_L64 r3] REP i=1 submit=0 wait=0 wall_s=0.012603
+[E7a_L64 r3] REP i=2 submit=0 wait=0 wall_s=0.012809
+[E7a_L64 r3] RESULT mode=ramp L=64 K=1 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.038706 gflops_wall=81.273 cur_freq_after=610000000
+[E7a_L64 r1] GATERES submit=0 wait=0
+[E7a_L64 r1] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=64 R=1 PASS
+[E7a_L64 r1] REP i=0 submit=0 wait=0 wall_s=0.019364
+[E7a_L64 r1] REP i=1 submit=0 wait=0 wall_s=0.018622
+[E7a_L64 r1] REP i=2 submit=0 wait=0 wall_s=0.019386
+[E7a_L64 r1] RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.057774 gflops_wall=108.898 cur_freq_after=610000000
+[E7a_L64 r2] GATERES submit=0 wait=0
+[E7a_L64 r2] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=64 R=1 PASS
+[E7a_L64 r2] REP i=0 submit=0 wait=0 wall_s=0.018909
+[E7a_L64 r2] REP i=1 submit=0 wait=0 wall_s=0.018885
+[E7a_L64 r2] REP i=2 submit=0 wait=0 wall_s=0.018608
+[E7a_L64 r2] RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.057278 gflops_wall=109.841 cur_freq_after=610000000
+[E7a_L64 r3] GATERES submit=0 wait=0
+[E7a_L64 r3] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=64 R=1 PASS
+[E7a_L64 r3] REP i=0 submit=0 wait=0 wall_s=0.019016
+[E7a_L64 r3] REP i=1 submit=0 wait=0 wall_s=0.018618
+[E7a_L64 r3] REP i=2 submit=0 wait=0 wall_s=0.018957
+[E7a_L64 r3] RESULT mode=ramp L=64 K=2 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.056846 gflops_wall=110.676 cur_freq_after=610000000
+[E7a_L64 r1] GATERES submit=0 wait=0
+[E7a_L64 r1] GATE nbad=0 expect=6000 fmaxbad=-1 K=3 L=64 R=1 PASS
+[E7a_L64 r1] REP i=0 submit=0 wait=0 wall_s=0.037040
+[E7a_L64 r1] REP i=1 submit=0 wait=0 wall_s=0.037148
+[E7a_L64 r1] REP i=2 submit=0 wait=0 wall_s=0.037126
+[E7a_L64 r1] RESULT mode=ramp L=64 K=3 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.111777 gflops_wall=84.429 cur_freq_after=610000000
+[E7a_L64 r2] GATERES submit=0 wait=0
+[E7a_L64 r2] GATE nbad=0 expect=6000 fmaxbad=-1 K=3 L=64 R=1 PASS
+[E7a_L64 r2] REP i=0 submit=0 wait=0 wall_s=0.037118
+[E7a_L64 r2] REP i=1 submit=0 wait=0 wall_s=0.037277
+[E7a_L64 r2] REP i=2 submit=0 wait=0 wall_s=0.036832
+[E7a_L64 r2] RESULT mode=ramp L=64 K=3 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.111886 gflops_wall=84.346 cur_freq_after=610000000
+[E7a_L64 r3] GATERES submit=0 wait=0
+[E7a_L64 r3] GATE nbad=0 expect=6000 fmaxbad=-1 K=3 L=64 R=1 PASS
+[E7a_L64 r3] REP i=0 submit=0 wait=0 wall_s=0.036876
+[E7a_L64 r3] REP i=1 submit=0 wait=0 wall_s=0.037405
+[E7a_L64 r3] REP i=2 submit=0 wait=0 wall_s=0.037263
+[E7a_L64 r3] RESULT mode=ramp L=64 K=3 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.112319 gflops_wall=84.021 cur_freq_after=610000000
+[E7a_L64 r1] GATERES submit=0 wait=0
+[E7a_L64 r1] GATE nbad=0 expect=8000 fmaxbad=-1 K=4 L=64 R=1 PASS
+[E7a_L64 r1] REP i=0 submit=0 wait=0 wall_s=0.048590
+[E7a_L64 r1] REP i=1 submit=0 wait=0 wall_s=0.048413
+[E7a_L64 r1] REP i=2 submit=0 wait=0 wall_s=0.048493
+[E7a_L64 r1] RESULT mode=ramp L=64 K=4 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.145837 gflops_wall=86.281 cur_freq_after=610000000
+[E7a_L64 r2] GATERES submit=0 wait=0
+[E7a_L64 r2] GATE nbad=0 expect=8000 fmaxbad=-1 K=4 L=64 R=1 PASS
+[E7a_L64 r2] REP i=0 submit=0 wait=0 wall_s=0.048480
+[E7a_L64 r2] REP i=1 submit=0 wait=0 wall_s=0.048798
+[E7a_L64 r2] REP i=2 submit=0 wait=0 wall_s=0.048288
+[E7a_L64 r2] RESULT mode=ramp L=64 K=4 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.145890 gflops_wall=86.249 cur_freq_after=610000000
+[E7a_L64 r3] GATERES submit=0 wait=0
+[E7a_L64 r3] GATE nbad=0 expect=8000 fmaxbad=-1 K=4 L=64 R=1 PASS
+[E7a_L64 r3] REP i=0 submit=0 wait=0 wall_s=0.048350
+[E7a_L64 r3] REP i=1 submit=0 wait=0 wall_s=0.048595
+[E7a_L64 r3] REP i=2 submit=0 wait=0 wall_s=0.048511
+[E7a_L64 r3] RESULT mode=ramp L=64 K=4 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.145758 gflops_wall=86.327 cur_freq_after=610000000
+[E7a_L64 r1] GATERES submit=0 wait=0
+[E7a_L64 r1] GATE nbad=0 expect=16000 fmaxbad=-1 K=8 L=64 R=1 PASS
+[E7a_L64 r1] REP i=0 submit=0 wait=0 wall_s=0.097864
+[E7a_L64 r1] REP i=1 submit=0 wait=0 wall_s=0.097370
+[E7a_L64 r1] REP i=2 submit=0 wait=0 wall_s=0.097462
+[E7a_L64 r1] RESULT mode=ramp L=64 K=8 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.292995 gflops_wall=85.892 cur_freq_after=610000000
+[E7a_L64 r2] GATERES submit=0 wait=0
+[E7a_L64 r2] GATE nbad=0 expect=16000 fmaxbad=-1 K=8 L=64 R=1 PASS
+[E7a_L64 r2] REP i=0 submit=0 wait=0 wall_s=0.097813
+[E7a_L64 r2] REP i=1 submit=0 wait=0 wall_s=0.097457
+[E7a_L64 r2] REP i=2 submit=0 wait=0 wall_s=0.097528
+[E7a_L64 r2] RESULT mode=ramp L=64 K=8 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.293185 gflops_wall=85.836 cur_freq_after=610000000
+[E7a_L64 r3] GATERES submit=0 wait=0
+[E7a_L64 r3] GATE nbad=0 expect=16000 fmaxbad=-1 K=8 L=64 R=1 PASS
+[E7a_L64 r3] REP i=0 submit=0 wait=0 wall_s=0.097468
+[E7a_L64 r3] REP i=1 submit=0 wait=0 wall_s=0.097519
+[E7a_L64 r3] REP i=2 submit=0 wait=0 wall_s=0.097799
+[E7a_L64 r3] RESULT mode=ramp L=64 K=8 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.293200 gflops_wall=85.832 cur_freq_after=610000000
+[E7a_L64 r1] GATERES submit=0 wait=0
+[E7a_L64 r1] GATE nbad=0 expect=32000 fmaxbad=-1 K=16 L=64 R=1 PASS
+[E7a_L64 r1] REP i=0 submit=0 wait=0 wall_s=0.189951
+[E7a_L64 r1] REP i=1 submit=0 wait=0 wall_s=0.190147
+[E7a_L64 r1] REP i=2 submit=0 wait=0 wall_s=0.190176
+[E7a_L64 r1] RESULT mode=ramp L=64 K=16 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.570613 gflops_wall=88.206 cur_freq_after=610000000
+[E7a_L64 r2] GATERES submit=0 wait=0
+[E7a_L64 r2] GATE nbad=0 expect=32000 fmaxbad=-1 K=16 L=64 R=1 PASS
+[E7a_L64 r2] REP i=0 submit=0 wait=0 wall_s=0.190293
+[E7a_L64 r2] REP i=1 submit=0 wait=0 wall_s=0.190324
+[E7a_L64 r2] REP i=2 submit=0 wait=0 wall_s=0.189968
+[E7a_L64 r2] RESULT mode=ramp L=64 K=16 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.570925 gflops_wall=88.158 cur_freq_after=610000000
+[E7a_L64 r3] GATERES submit=0 wait=0
+[E7a_L64 r3] GATE nbad=0 expect=32000 fmaxbad=-1 K=16 L=64 R=1 PASS
+[E7a_L64 r3] REP i=0 submit=0 wait=0 wall_s=0.190455
+[E7a_L64 r3] REP i=1 submit=0 wait=0 wall_s=0.190238
+[E7a_L64 r3] REP i=2 submit=0 wait=0 wall_s=0.190536
+[E7a_L64 r3] RESULT mode=ramp L=64 K=16 R=1 n=65536 iters=2000 reps=3 gx=1024 ramp=500 wall_s=0.571556 gflops_wall=88.061 cur_freq_after=610000000
+### E7b: K=1,2 at L=32 and L=128 (spike across L, upgraded gate)
+[E7b_L32 r1] GATERES submit=0 wait=0
+[E7b_L32 r1] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=32 R=1 PASS
+[E7b_L32 r1] REP i=0 submit=0 wait=0 wall_s=0.024562
+[E7b_L32 r1] REP i=1 submit=0 wait=0 wall_s=0.024623
+[E7b_L32 r1] REP i=2 submit=0 wait=0 wall_s=0.024553
+[E7b_L32 r1] RESULT mode=ramp L=32 K=1 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.074447 gflops_wall=42.254 cur_freq_after=610000000
+[E7b_L32 r2] GATERES submit=0 wait=0
+[E7b_L32 r2] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=32 R=1 PASS
+[E7b_L32 r2] REP i=0 submit=0 wait=0 wall_s=0.024432
+[E7b_L32 r2] REP i=1 submit=0 wait=0 wall_s=0.024470
+[E7b_L32 r2] REP i=2 submit=0 wait=0 wall_s=0.024502
+[E7b_L32 r2] RESULT mode=ramp L=32 K=1 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.073815 gflops_wall=42.616 cur_freq_after=610000000
+[E7b_L32 r3] GATERES submit=0 wait=0
+[E7b_L32 r3] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=32 R=1 PASS
+[E7b_L32 r3] REP i=0 submit=0 wait=0 wall_s=0.024559
+[E7b_L32 r3] REP i=1 submit=0 wait=0 wall_s=0.024755
+[E7b_L32 r3] REP i=2 submit=0 wait=0 wall_s=0.024656
+[E7b_L32 r3] RESULT mode=ramp L=32 K=1 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.074313 gflops_wall=42.331 cur_freq_after=610000000
+[E7b_L32 r1] GATERES submit=0 wait=0
+[E7b_L32 r1] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=32 R=1 PASS
+[E7b_L32 r1] REP i=0 submit=0 wait=0 wall_s=0.036709
+[E7b_L32 r1] REP i=1 submit=0 wait=0 wall_s=0.036584
+[E7b_L32 r1] REP i=2 submit=0 wait=0 wall_s=0.036397
+[E7b_L32 r1] RESULT mode=ramp L=32 K=2 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.109961 gflops_wall=57.215 cur_freq_after=610000000
+[E7b_L32 r2] GATERES submit=0 wait=0
+[E7b_L32 r2] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=32 R=1 PASS
+[E7b_L32 r2] REP i=0 submit=0 wait=0 wall_s=0.036605
+[E7b_L32 r2] REP i=1 submit=0 wait=0 wall_s=0.036401
+[E7b_L32 r2] REP i=2 submit=0 wait=0 wall_s=0.036420
+[E7b_L32 r2] RESULT mode=ramp L=32 K=2 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.109699 gflops_wall=57.352 cur_freq_after=610000000
+[E7b_L32 r3] GATERES submit=0 wait=0
+[E7b_L32 r3] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=32 R=1 PASS
+[E7b_L32 r3] REP i=0 submit=0 wait=0 wall_s=0.036460
+[E7b_L32 r3] REP i=1 submit=0 wait=0 wall_s=0.036783
+[E7b_L32 r3] REP i=2 submit=0 wait=0 wall_s=0.036476
+[E7b_L32 r3] RESULT mode=ramp L=32 K=2 R=1 n=65536 iters=2000 reps=3 gx=2048 ramp=500 wall_s=0.110098 gflops_wall=57.144 cur_freq_after=610000000
+[E7b_L128 r1] GATERES submit=0 wait=0
+[E7b_L128 r1] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=128 R=1 PASS
+[E7b_L128 r1] REP i=0 submit=0 wait=0 wall_s=0.014412
+[E7b_L128 r1] REP i=1 submit=0 wait=0 wall_s=0.014444
+[E7b_L128 r1] REP i=2 submit=0 wait=0 wall_s=0.014404
+[E7b_L128 r1] RESULT mode=ramp L=128 K=1 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.043504 gflops_wall=72.309 cur_freq_after=610000000
+[E7b_L128 r2] GATERES submit=0 wait=0
+[E7b_L128 r2] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=128 R=1 PASS
+[E7b_L128 r2] REP i=0 submit=0 wait=0 wall_s=0.014632
+[E7b_L128 r2] REP i=1 submit=0 wait=0 wall_s=0.014704
+[E7b_L128 r2] REP i=2 submit=0 wait=0 wall_s=0.016052
+[E7b_L128 r2] RESULT mode=ramp L=128 K=1 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.046258 gflops_wall=68.004 cur_freq_after=610000000
+[E7b_L128 r3] GATERES submit=0 wait=0
+[E7b_L128 r3] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=128 R=1 PASS
+[E7b_L128 r3] REP i=0 submit=0 wait=0 wall_s=0.014494
+[E7b_L128 r3] REP i=1 submit=0 wait=0 wall_s=0.014730
+[E7b_L128 r3] REP i=2 submit=0 wait=0 wall_s=0.014885
+[E7b_L128 r3] RESULT mode=ramp L=128 K=1 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.044716 gflops_wall=70.349 cur_freq_after=610000000
+[E7b_L128 r1] GATERES submit=0 wait=0
+[E7b_L128 r1] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=128 R=1 PASS
+[E7b_L128 r1] REP i=0 submit=0 wait=0 wall_s=0.020167
+[E7b_L128 r1] REP i=1 submit=0 wait=0 wall_s=0.020567
+[E7b_L128 r1] REP i=2 submit=0 wait=0 wall_s=0.020422
+[E7b_L128 r1] RESULT mode=ramp L=128 K=2 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.061699 gflops_wall=101.970 cur_freq_after=610000000
+[E7b_L128 r2] GATERES submit=0 wait=0
+[E7b_L128 r2] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=128 R=1 PASS
+[E7b_L128 r2] REP i=0 submit=0 wait=0 wall_s=0.020339
+[E7b_L128 r2] REP i=1 submit=0 wait=0 wall_s=0.020420
+[E7b_L128 r2] REP i=2 submit=0 wait=0 wall_s=0.020221
+[E7b_L128 r2] RESULT mode=ramp L=128 K=2 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.061699 gflops_wall=101.971 cur_freq_after=610000000
+[E7b_L128 r3] GATERES submit=0 wait=0
+[E7b_L128 r3] GATE nbad=0 expect=4000 fmaxbad=-1 K=2 L=128 R=1 PASS
+[E7b_L128 r3] REP i=0 submit=0 wait=0 wall_s=0.020280
+[E7b_L128 r3] REP i=1 submit=0 wait=0 wall_s=0.020278
+[E7b_L128 r3] REP i=2 submit=0 wait=0 wall_s=0.020518
+[E7b_L128 r3] RESULT mode=ramp L=128 K=2 R=1 n=65536 iters=2000 reps=3 gx=512 ramp=500 wall_s=0.061378 gflops_wall=102.503 cur_freq_after=610000000
+### E9: n=1048576 K=16 (r3 INVALID cell) + K=1 control, clean
+[E9_n1M r1] GATERES submit=0 wait=0
+[E9_n1M r1] GATE nbad=1270784 expect=32000 fmaxbad=0 K=16 L=64 R=1 FAIL
+[E9_n1M r1] GATE_FAIL_EXIT
+[E9_n1M r2] GATERES submit=0 wait=0
+[E9_n1M r2] GATE nbad=1329664 expect=32000 fmaxbad=0 K=16 L=64 R=1 FAIL
+[E9_n1M r2] GATE_FAIL_EXIT
+[E9_n1M r3] GATERES submit=0 wait=0
+[E9_n1M r3] GATE nbad=1347328 expect=32000 fmaxbad=0 K=16 L=64 R=1 FAIL
+[E9_n1M r3] GATE_FAIL_EXIT
+[E9_n1M r1] GATERES submit=0 wait=0
+[E9_n1M r1] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=64 R=1 PASS
+[E9_n1M r1] REP i=0 submit=0 wait=0 wall_s=0.190046
+[E9_n1M r1] REP i=1 submit=0 wait=0 wall_s=0.190272
+[E9_n1M r1] REP i=2 submit=0 wait=0 wall_s=0.189996
+[E9_n1M r1] RESULT mode=ramp L=64 K=1 R=1 n=1048576 iters=2000 reps=3 gx=16384 ramp=500 wall_s=0.570641 gflops_wall=88.202 cur_freq_after=610000000
+[E9_n1M r2] GATERES submit=0 wait=0
+[E9_n1M r2] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=64 R=1 PASS
+[E9_n1M r2] REP i=0 submit=0 wait=0 wall_s=0.189605
+[E9_n1M r2] REP i=1 submit=0 wait=0 wall_s=0.189888
+[E9_n1M r2] REP i=2 submit=0 wait=0 wall_s=0.189808
+[E9_n1M r2] RESULT mode=ramp L=64 K=1 R=1 n=1048576 iters=2000 reps=3 gx=16384 ramp=500 wall_s=0.569629 gflops_wall=88.359 cur_freq_after=610000000
+[E9_n1M r3] GATERES submit=0 wait=0
+[E9_n1M r3] GATE nbad=0 expect=2000 fmaxbad=-1 K=1 L=64 R=1 PASS
+[E9_n1M r3] REP i=0 submit=0 wait=0 wall_s=0.189861
+[E9_n1M r3] REP i=1 submit=0 wait=0 wall_s=0.189870
+[E9_n1M r3] REP i=2 submit=0 wait=0 wall_s=0.189593
+[E9_n1M r3] RESULT mode=ramp L=64 K=1 R=1 n=1048576 iters=2000 reps=3 gx=16384 ramp=500 wall_s=0.569667 gflops_wall=88.353 cur_freq_after=610000000
+E7_E9_DONE

@@ -1,0 +1,27 @@
+#version 450
+// Grid-stride D=2, COALESCED variant. Work-item g owns elements g and g+STRIDE,
+// where STRIDE = total invocations. Each load instruction stays contiguous across
+// lanes (lane 0 -> x[0], lane 1 -> x[1], ...), unlike the x[2g] variant whose
+// per-instruction stride was 2.
+// Gate: element 0 starts at 0 and runs iters times -> C0 == iters.
+// Harness must be run with VKOPT_DIV=2 and K=1.
+layout(local_size_x = 64) in;
+layout(std430, binding = 0) buffer X { vec4 x[]; };
+layout(std430, binding = 1) buffer Y { vec4 y[]; };
+layout(std430, binding = 2) buffer Z { vec4 z[]; };
+layout(push_constant) uniform PC { uint iters; uint stride; } pc;
+void main() {
+    uint g = gl_GlobalInvocationID.x;
+    uint i0 = g;
+    uint i1 = g + pc.stride;
+    vec4 x0 = x[i0]; vec4 y0 = y[i0];
+    vec4 x1 = x[i1]; vec4 y1 = y[i1];
+    vec4 z0 = vec4(0.0);
+    vec4 z1 = vec4(0.0);
+    for (uint k = 0u; k < pc.iters; k++) {
+        z0 = z0 * x0 + y0;
+        z1 = z1 * x1 + y1;
+    }
+    z[i0] = z0;
+    z[i1] = z1;
+}

@@ -1,0 +1,4 @@
+CPU_FMA n=65536 iters=2000 wall_s=0.211486 gflops=4.95813 sink=5.24288e+08
+OCL_KERNEL n=65536 iters=2000 wall_s=6.920292 gflops=0.15152
+FULLBUF_PASS ok=262144 mn=2000 mx=2000
+DONE

@@ -1,0 +1,92 @@
+CLDEV name=QUALCOMM Adreno(TM) type=0x0 maxcu=1 maxmhz=1 nplat=1 ndev=1
+GATE cell=l64a1 C0=2000 expect=2000 nbad=0 n=262144 PASS
+RESULT idx=0 cell=l64a1 n=65536 iters=2000 reps=5 L=64 K=1 wall_s=0.011507 gflops_wall=91.123 cur_freq=610000000
+RESULT idx=1 cell=l64a1 n=65536 iters=2000 reps=5 L=64 K=1 wall_s=0.011151 gflops_wall=94.033 cur_freq=610000000
+RESULT idx=2 cell=l64a1 n=65536 iters=2000 reps=5 L=64 K=1 wall_s=0.011453 gflops_wall=91.552 cur_freq=610000000
+RESULT idx=3 cell=l64a1 n=65536 iters=2000 reps=5 L=64 K=1 wall_s=0.011341 gflops_wall=92.462 cur_freq=610000000
+RESULT idx=4 cell=l64a1 n=65536 iters=2000 reps=5 L=64 K=1 wall_s=0.011165 gflops_wall=93.917 cur_freq=610000000
+GATE cell=l64a2 C0=2000 expect=2000 nbad=0 n=262144 PASS
+RESULT idx=5 cell=l64a2 n=65536 iters=2000 reps=5 L=64 K=2 wall_s=0.010773 gflops_wall=97.338 cur_freq=610000000
+RESULT idx=6 cell=l64a2 n=65536 iters=2000 reps=5 L=64 K=2 wall_s=0.010486 gflops_wall=100.002 cur_freq=610000000
+RESULT idx=7 cell=l64a2 n=65536 iters=2000 reps=5 L=64 K=2 wall_s=0.010361 gflops_wall=101.207 cur_freq=610000000
+RESULT idx=8 cell=l64a2 n=65536 iters=2000 reps=5 L=64 K=2 wall_s=0.010638 gflops_wall=98.573 cur_freq=610000000
+RESULT idx=9 cell=l64a2 n=65536 iters=2000 reps=5 L=64 K=2 wall_s=0.010678 gflops_wall=98.198 cur_freq=610000000
+GATE cell=l64a4 C0=2000 expect=2000 nbad=0 n=262144 PASS
+RESULT idx=10 cell=l64a4 n=65536 iters=2000 reps=5 L=64 K=4 wall_s=0.010433 gflops_wall=100.510 cur_freq=610000000
+RESULT idx=11 cell=l64a4 n=65536 iters=2000 reps=5 L=64 K=4 wall_s=0.010582 gflops_wall=99.088 cur_freq=610000000
+RESULT idx=12 cell=l64a4 n=65536 iters=2000 reps=5 L=64 K=4 wall_s=0.010637 gflops_wall=98.581 cur_freq=610000000
+RESULT idx=13 cell=l64a4 n=65536 iters=2000 reps=5 L=64 K=4 wall_s=0.010380 gflops_wall=101.018 cur_freq=610000000
+RESULT idx=14 cell=l64a4 n=65536 iters=2000 reps=5 L=64 K=4 wall_s=0.012926 gflops_wall=81.124 cur_freq=610000000
+GATE cell=l64a8 C0=2000 expect=2000 nbad=0 n=262144 PASS
+RESULT idx=15 cell=l64a8 n=65536 iters=2000 reps=5 L=64 K=8 wall_s=0.010573 gflops_wall=99.171 cur_freq=610000000
+RESULT idx=16 cell=l64a8 n=65536 iters=2000 reps=5 L=64 K=8 wall_s=0.010609 gflops_wall=98.835 cur_freq=610000000
+RESULT idx=17 cell=l64a8 n=65536 iters=2000 reps=5 L=64 K=8 wall_s=0.010506 gflops_wall=99.805 cur_freq=610000000
+RESULT idx=18 cell=l64a8 n=65536 iters=2000 reps=5 L=64 K=8 wall_s=0.010309 gflops_wall=101.710 cur_freq=610000000
+RESULT idx=19 cell=l64a8 n=65536 iters=2000 reps=5 L=64 K=8 wall_s=0.010327 gflops_wall=101.541 cur_freq=610000000
+GATE cell=l64a16 C0=2000 expect=2000 nbad=0 n=262144 PASS
+RESULT idx=20 cell=l64a16 n=65536 iters=2000 reps=5 L=64 K=16 wall_s=0.010231 gflops_wall=102.490 cur_freq=610000000
+RESULT idx=21 cell=l64a16 n=65536 iters=2000 reps=5 L=64 K=16 wall_s=0.010707 gflops_wall=97.932 cur_freq=610000000
+RESULT idx=22 cell=l64a16 n=65536 iters=2000 reps=5 L=64 K=16 wall_s=0.010323 gflops_wall=101.574 cur_freq=610000000
+RESULT idx=23 cell=l64a16 n=65536 iters=2000 reps=5 L=64 K=16 wall_s=0.010206 gflops_wall=102.737 cur_freq=610000000
+RESULT idx=24 cell=l64a16 n=65536 iters=2000 reps=5 L=64 K=16 wall_s=0.010096 gflops_wall=103.856 cur_freq=610000000
+GATE cell=l128a1 C0=2000 expect=2000 nbad=0 n=262144 PASS
+RESULT idx=25 cell=l128a1 n=65536 iters=2000 reps=5 L=128 K=1 wall_s=0.011654 gflops_wall=89.977 cur_freq=610000000
+RESULT idx=26 cell=l128a1 n=65536 iters=2000 reps=5 L=128 K=1 wall_s=0.011772 gflops_wall=89.075 cur_freq=610000000
+RESULT idx=27 cell=l128a1 n=65536 iters=2000 reps=5 L=128 K=1 wall_s=0.011468 gflops_wall=91.437 cur_freq=610000000
+RESULT idx=28 cell=l128a1 n=65536 iters=2000 reps=5 L=128 K=1 wall_s=0.011457 gflops_wall=91.519 cur_freq=610000000
+RESULT idx=29 cell=l128a1 n=65536 iters=2000 reps=5 L=128 K=1 wall_s=0.011837 gflops_wall=88.581 cur_freq=610000000
+GATE cell=l128a2 C0=2000 expect=2000 nbad=0 n=262144 PASS
+RESULT idx=30 cell=l128a2 n=65536 iters=2000 reps=5 L=128 K=2 wall_s=0.011019 gflops_wall=95.161 cur_freq=610000000
+RESULT idx=31 cell=l128a2 n=65536 iters=2000 reps=5 L=128 K=2 wall_s=0.011210 gflops_wall=93.540 cur_freq=610000000
+RESULT idx=32 cell=l128a2 n=65536 iters=2000 reps=5 L=128 K=2 wall_s=0.011264 gflops_wall=93.089 cur_freq=610000000
+RESULT idx=33 cell=l128a2 n=65536 iters=2000 reps=5 L=128 K=2 wall_s=0.011217 gflops_wall=93.482 cur_freq=610000000
+RESULT idx=34 cell=l128a2 n=65536 iters=2000 reps=5 L=128 K=2 wall_s=0.011016 gflops_wall=95.188 cur_freq=610000000
+GATE cell=l128a4 C0=2000 expect=2000 nbad=0 n=262144 PASS
+RESULT idx=35 cell=l128a4 n=65536 iters=2000 reps=5 L=128 K=4 wall_s=0.010362 gflops_wall=101.195 cur_freq=610000000
+RESULT idx=36 cell=l128a4 n=65536 iters=2000 reps=5 L=128 K=4 wall_s=0.010671 gflops_wall=98.267 cur_freq=610000000
+RESULT idx=37 cell=l128a4 n=65536 iters=2000 reps=5 L=128 K=4 wall_s=0.010297 gflops_wall=101.835 cur_freq=610000000
+RESULT idx=38 cell=l128a4 n=65536 iters=2000 reps=5 L=128 K=4 wall_s=0.010313 gflops_wall=101.677 cur_freq=610000000
+RESULT idx=39 cell=l128a4 n=65536 iters=2000 reps=5 L=128 K=4 wall_s=0.010414 gflops_wall=100.686 cur_freq=610000000
+GATE cell=l128a8 C0=2000 expect=2000 nbad=0 n=262144 PASS
+RESULT idx=40 cell=l128a8 n=65536 iters=2000 reps=5 L=128 K=8 wall_s=0.010211 gflops_wall=102.694 cur_freq=610000000
+RESULT idx=41 cell=l128a8 n=65536 iters=2000 reps=5 L=128 K=8 wall_s=0.010487 gflops_wall=99.984 cur_freq=610000000
+RESULT idx=42 cell=l128a8 n=65536 iters=2000 reps=5 L=128 K=8 wall_s=0.010240 gflops_wall=102.401 cur_freq=610000000
+RESULT idx=43 cell=l128a8 n=65536 iters=2000 reps=5 L=128 K=8 wall_s=0.010414 gflops_wall=100.692 cur_freq=610000000
+RESULT idx=44 cell=l128a8 n=65536 iters=2000 reps=5 L=128 K=8 wall_s=0.010196 gflops_wall=102.845 cur_freq=610000000
+GATE cell=l128a16 C0=2000 expect=2000 nbad=0 n=262144 PASS
+RESULT idx=45 cell=l128a16 n=65536 iters=2000 reps=5 L=128 K=16 wall_s=0.010416 gflops_wall=100.673 cur_freq=610000000
+RESULT idx=46 cell=l128a16 n=65536 iters=2000 reps=5 L=128 K=16 wall_s=0.010199 gflops_wall=102.809 cur_freq=610000000
+RESULT idx=47 cell=l128a16 n=65536 iters=2000 reps=5 L=128 K=16 wall_s=0.010409 gflops_wall=100.740 cur_freq=610000000
+RESULT idx=48 cell=l128a16 n=65536 iters=2000 reps=5 L=128 K=16 wall_s=0.010246 gflops_wall=102.336 cur_freq=610000000
+RESULT idx=49 cell=l128a16 n=65536 iters=2000 reps=5 L=128 K=16 wall_s=0.010153 gflops_wall=103.281 cur_freq=610000000
+GATE cell=l256a1 C0=2000 expect=2000 nbad=0 n=262144 PASS
+RESULT idx=50 cell=l256a1 n=65536 iters=2000 reps=5 L=256 K=1 wall_s=0.011516 gflops_wall=91.055 cur_freq=610000000
+RESULT idx=51 cell=l256a1 n=65536 iters=2000 reps=5 L=256 K=1 wall_s=0.011677 gflops_wall=89.798 cur_freq=610000000
+RESULT idx=52 cell=l256a1 n=65536 iters=2000 reps=5 L=256 K=1 wall_s=0.011605 gflops_wall=90.355 cur_freq=610000000
+RESULT idx=53 cell=l256a1 n=65536 iters=2000 reps=5 L=256 K=1 wall_s=0.011487 gflops_wall=91.280 cur_freq=610000000
+RESULT idx=54 cell=l256a1 n=65536 iters=2000 reps=5 L=256 K=1 wall_s=0.011463 gflops_wall=91.478 cur_freq=610000000
+GATE cell=l256a2 C0=2000 expect=2000 nbad=0 n=262144 PASS
+RESULT idx=55 cell=l256a2 n=65536 iters=2000 reps=5 L=256 K=2 wall_s=0.011214 gflops_wall=93.510 cur_freq=610000000
+RESULT idx=56 cell=l256a2 n=65536 iters=2000 reps=5 L=256 K=2 wall_s=0.010898 gflops_wall=96.218 cur_freq=610000000
+RESULT idx=57 cell=l256a2 n=65536 iters=2000 reps=5 L=256 K=2 wall_s=0.010770 gflops_wall=97.360 cur_freq=610000000
+RESULT idx=58 cell=l256a2 n=65536 iters=2000 reps=5 L=256 K=2 wall_s=0.010813 gflops_wall=96.972 cur_freq=610000000
+RESULT idx=59 cell=l256a2 n=65536 iters=2000 reps=5 L=256 K=2 wall_s=0.010974 gflops_wall=95.553 cur_freq=610000000
+GATE cell=l256a4 C0=2000 expect=2000 nbad=0 n=262144 PASS
+RESULT idx=60 cell=l256a4 n=65536 iters=2000 reps=5 L=256 K=4 wall_s=0.010666 gflops_wall=98.306 cur_freq=610000000
+RESULT idx=61 cell=l256a4 n=65536 iters=2000 reps=5 L=256 K=4 wall_s=0.010446 gflops_wall=100.385 cur_freq=610000000
+RESULT idx=62 cell=l256a4 n=65536 iters=2000 reps=5 L=256 K=4 wall_s=0.010500 gflops_wall=99.866 cur_freq=610000000
+RESULT idx=63 cell=l256a4 n=65536 iters=2000 reps=5 L=256 K=4 wall_s=0.010335 gflops_wall=101.463 cur_freq=610000000
+RESULT idx=64 cell=l256a4 n=65536 iters=2000 reps=5 L=256 K=4 wall_s=0.010292 gflops_wall=101.884 cur_freq=610000000
+GATE cell=l256a8 C0=2000 expect=2000 nbad=0 n=262144 PASS
+RESULT idx=65 cell=l256a8 n=65536 iters=2000 reps=5 L=256 K=8 wall_s=0.010518 gflops_wall=99.690 cur_freq=610000000
+RESULT idx=66 cell=l256a8 n=65536 iters=2000 reps=5 L=256 K=8 wall_s=0.010608 gflops_wall=98.845 cur_freq=610000000
+RESULT idx=67 cell=l256a8 n=65536 iters=2000 reps=5 L=256 K=8 wall_s=0.010443 gflops_wall=100.411 cur_freq=610000000
+RESULT idx=68 cell=l256a8 n=65536 iters=2000 reps=5 L=256 K=8 wall_s=0.010542 gflops_wall=99.468 cur_freq=610000000
+RESULT idx=69 cell=l256a8 n=65536 iters=2000 reps=5 L=256 K=8 wall_s=0.010305 gflops_wall=101.753 cur_freq=610000000
+GATE cell=l256a16 C0=2000 expect=2000 nbad=0 n=262144 PASS
+RESULT idx=70 cell=l256a16 n=65536 iters=2000 reps=5 L=256 K=16 wall_s=0.010327 gflops_wall=101.535 cur_freq=610000000
+RESULT idx=71 cell=l256a16 n=65536 iters=2000 reps=5 L=256 K=16 wall_s=0.010054 gflops_wall=104.299 cur_freq=610000000
+RESULT idx=72 cell=l256a16 n=65536 iters=2000 reps=5 L=256 K=16 wall_s=0.010148 gflops_wall=103.331 cur_freq=610000000
+RESULT idx=73 cell=l256a16 n=65536 iters=2000 reps=5 L=256 K=16 wall_s=0.009985 gflops_wall=105.015 cur_freq=610000000
+RESULT idx=74 cell=l256a16 n=65536 iters=2000 reps=5 L=256 K=16 wall_s=0.010780 gflops_wall=97.269 cur_freq=610000000
+DONE

@@ -1,0 +1,13 @@
+CLDEV name=QUALCOMM Adreno(TM) type=0x0 maxcu=1 maxmhz=1 nplat=1 ndev=1
+PROF_SUPPORTED=1
+MODE=single run=0 n=65536 iters=2000 L=64 wall_s=6.914858 gflops_wall=0.1516 kernel_ns=4316928 cur_freq=610000000
+GATE mode=single run=0 C0=2000 expect=2000 PASS
+MODE=single run=1 n=65536 iters=2000 L=64 wall_s=6.907863 gflops_wall=0.1518 kernel_ns=616192 cur_freq=610000000
+GATE mode=single run=1 C0=2000 expect=2000 PASS
+MODE=single run=2 n=65536 iters=2000 L=64 wall_s=6.975702 gflops_wall=0.1503 kernel_ns=581888 cur_freq=610000000
+GATE mode=single run=2 C0=2000 expect=2000 PASS
+MODE=perrep R=10 n=65536 iters=2000 L=64 wall_s=71.182211 gflops_wall=0.1473 kernel_ns_sum=2729472 cur_freq=610000000
+GATE mode=perrep C0=20000 expect=20000 PASS
+MODE=batch R=10 n=65536 iters=2000 L=64 wall_s=71.888909 gflops_wall=0.1459 kernel_ns_sum=2723840 cur_freq=610000000
+GATE mode=batch C0=20000 expect=20000 PASS
+DONE

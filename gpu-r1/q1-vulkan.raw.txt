@@ -1,0 +1,99 @@
+### REP=1 ARM=cold ts=1791386778
+DEVICE Adreno (TM) 616
+MEMTYPE 2
+PIPELAYOUT rc=0
+SHADERMOD rc=0
+PIPELINE rc=0
+GATE C0=2000 expect=2000 applied=1 PASS
+RESULT mode=cold n=65536 iters=2000 reps=10 R=1 disp=1 ramp=0 wall_s=0.281614 gflops_wall=37.235 cur_freq_after=430000000
+### REP=1 ARM=ramp ts=1791386778
+DEVICE Adreno (TM) 616
+MEMTYPE 2
+PIPELAYOUT rc=0
+SHADERMOD rc=0
+PIPELINE rc=0
+GATE C0=2000 expect=2000 applied=1 PASS
+RESULT mode=ramp n=65536 iters=2000 reps=10 R=1 disp=1 ramp=500 wall_s=0.145748 gflops_wall=71.944 cur_freq_after=610000000
+### REP=1 ARM=batch1 ts=1791386779
+DEVICE Adreno (TM) 616
+MEMTYPE 2
+PIPELAYOUT rc=0
+SHADERMOD rc=0
+PIPELINE rc=0
+DISPATCHES_RECORDED 16
+GATE C0=32000 expect=32000 applied=16 PASS
+RESULT mode=batch1 n=65536 iters=2000 reps=10 R=16 disp=16 ramp=500 wall_s=2.179410 gflops_wall=76.981 cur_freq_after=610000000
+### REP=1 ARM=batchfp ts=1791386782
+DEVICE Adreno (TM) 616
+MEMTYPE 2
+PIPELAYOUT rc=0
+SHADERMOD rc=0
+PIPELINE rc=0
+GATE C0=2000 expect=2000 applied=1 PASS
+RESULT mode=batchfp n=65536 iters=2000 reps=10 R=16 disp=1 ramp=500 wall_s=2.331062 gflops_wall=71.972 cur_freq_after=610000000
+### REP=2 ARM=cold ts=1791386785
+DEVICE Adreno (TM) 616
+MEMTYPE 2
+PIPELAYOUT rc=0
+SHADERMOD rc=0
+PIPELINE rc=0
+GATE C0=2000 expect=2000 applied=1 PASS
+RESULT mode=cold n=65536 iters=2000 reps=10 R=1 disp=1 ramp=0 wall_s=0.278805 gflops_wall=37.610 cur_freq_after=430000000
+### REP=2 ARM=ramp ts=1791386786
+DEVICE Adreno (TM) 616
+MEMTYPE 2
+PIPELAYOUT rc=0
+SHADERMOD rc=0
+PIPELINE rc=0
+GATE C0=2000 expect=2000 applied=1 PASS
+RESULT mode=ramp n=65536 iters=2000 reps=10 R=1 disp=1 ramp=500 wall_s=0.144576 gflops_wall=72.528 cur_freq_after=610000000
+### REP=2 ARM=batch1 ts=1791386787
+DEVICE Adreno (TM) 616
+MEMTYPE 2
+PIPELAYOUT rc=0
+SHADERMOD rc=0
+PIPELINE rc=0
+DISPATCHES_RECORDED 16
+GATE C0=32000 expect=32000 applied=16 PASS
+RESULT mode=batch1 n=65536 iters=2000 reps=10 R=16 disp=16 ramp=500 wall_s=2.240062 gflops_wall=74.896 cur_freq_after=610000000
+### REP=2 ARM=batchfp ts=1791386790
+DEVICE Adreno (TM) 616
+MEMTYPE 2
+PIPELAYOUT rc=0
+SHADERMOD rc=0
+PIPELINE rc=0
+GATE C0=2000 expect=2000 applied=1 PASS
+RESULT mode=batchfp n=65536 iters=2000 reps=10 R=16 disp=1 ramp=500 wall_s=2.312163 gflops_wall=72.561 cur_freq_after=610000000
+### REP=3 ARM=cold ts=1791386793
+DEVICE Adreno (TM) 616
+MEMTYPE 2
+PIPELAYOUT rc=0
+SHADERMOD rc=0
+PIPELINE rc=0
+GATE C0=2000 expect=2000 applied=1 PASS
+RESULT mode=cold n=65536 iters=2000 reps=10 R=1 disp=1 ramp=0 wall_s=0.279325 gflops_wall=37.540 cur_freq_after=430000000
+### REP=3 ARM=ramp ts=1791386793
+DEVICE Adreno (TM) 616
+MEMTYPE 2
+PIPELAYOUT rc=0
+SHADERMOD rc=0
+PIPELINE rc=0
+GATE C0=2000 expect=2000 applied=1 PASS
+RESULT mode=ramp n=65536 iters=2000 reps=10 R=1 disp=1 ramp=500 wall_s=0.143491 gflops_wall=73.076 cur_freq_after=610000000
+### REP=3 ARM=batch1 ts=1791386794
+DEVICE Adreno (TM) 616
+MEMTYPE 2
+PIPELAYOUT rc=0
+SHADERMOD rc=0
+PIPELINE rc=0
+DISPATCHES_RECORDED 16
+GATE C0=32000 expect=32000 applied=16 PASS
+RESULT mode=batch1 n=65536 iters=2000 reps=10 R=16 disp=16 ramp=500 wall_s=2.179757 gflops_wall=76.968 cur_freq_after=610000000
+### REP=3 ARM=batchfp ts=1791386798
+DEVICE Adreno (TM) 616
+MEMTYPE 2
+PIPELAYOUT rc=0
+SHADERMOD rc=0
+PIPELINE rc=0
+GATE C0=2000 expect=2000 applied=1 PASS
+RESULT mode=batchfp n=65536 iters=2000 reps=10 R=16 disp=1 ramp=500 wall_s=2.318106 gflops_wall=72.375 cur_freq_after=610000000
