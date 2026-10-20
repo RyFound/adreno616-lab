@@ -1,39 +1,48 @@
 # adreno616-lab
 
-Benchmark dan probe GPU untuk **Adreno 616** (Snapdragon 712) yang dijalankan langsung di
-device, di dalam chroot Ubuntu, dengan biner bionic. Isinya: harness Vulkan compute, harness
-OpenCL, probe SoC (DSP/video/camera), dan benchmark CPU/RAM/disk sebagai pembanding.
+A measurement lab for the **Adreno 616** GPU in a Snapdragon 712 device, run on-device from an
+Ubuntu chroot using bionic (Android) binaries. It contains Vulkan compute and OpenCL harnesses,
+SoC probes (DSP, video decode, OpenGL ES), and CPU / RAM / storage benchmarks used as baselines.
 
-Setiap angka di repo ini adalah **throughput pada konfigurasi tertentu**, bukan plafon hardware.
-Semua sel menyertakan gate validasi dan raw log mentah; klaim yang tidak lolos gate tidak dipakai.
+> **Status:** research archive, not a library. Each round is a frozen experiment with its own
+> documents and unedited raw logs. There is no API-stability promise; the value of the repo is the
+> evidence, not a reusable SDK.
+
+Every number here is a throughput **measured at a specific configuration** — never a hardware
+ceiling. Every cell carries a validation gate and an unedited raw log; cells that fail the gate are
+not reported at all.
 
 ---
 
-## 1. Kenapa repo ini aneh
+## 1. Why this repository is unusual
 
-Jalur normal "install driver lalu pakai" tidak tersedia di device ini, jadi semuanya diakali:
+The normal path — install a driver, use it — does not exist on this device, so every layer is
+worked around:
 
-| Masalah | Kenyataan di device | Yang dipakai di sini |
+| Obstacle | Reality on the device | What this repo does instead |
 |---|---|---|
-| Shell lokal adalah chroot Ubuntu (glibc), GPU butuh bionic | `/system/bin` tidak ada di chroot | biner bionic dijalankan via `/apex/com.android.runtime/bin/linker64` (path absolut wajib) |
-| Loader Vulkan Android menemukan **0 physical device** di chroot | tidak ada `icd.d/*.json`; `VK_ICD_FILENAMES` tidak menolong | `dlopen("/vendor/lib64/hw/vulkan.adreno.so")` + simbol C++ mangled di namespace `qglinternal` |
-| Mesa freedreno/turnip tidak bisa dipakai | kernel 4.9 downstream hanya punya KGSL, tanpa MSM render UAPI | tidak dipakai sama sekali; GL/EGL glibc selalu jatuh ke llvmpipe |
-| OpenCL | `/vendor/lib64/libOpenCL.so` cuma shim | shim → `libCB.so`, compiler `libllvm-glnext.so` |
+| The local shell is an Ubuntu chroot (glibc); the GPU needs bionic | `/system/bin` is absent inside the chroot | bionic binaries are launched through `/apex/com.android.runtime/bin/linker64` (absolute path required) |
+| The Android Vulkan loader finds **0 physical devices** inside the chroot | no `icd.d/*.json`; `VK_ICD_FILENAMES` does not help | `dlopen("/vendor/lib64/hw/vulkan.adreno.so")` plus the C++ mangled symbols in namespace `qglinternal` |
+| Mesa freedreno / turnip are unusable | the downstream 4.9 kernel exposes KGSL only, with no upstream MSM render UAPI | not used at all; glibc GL/EGL always falls back to llvmpipe |
+| OpenCL | `/vendor/lib64/libOpenCL.so` is a shim, not an ICD | shim → `libCB.so`, compiler `libllvm-glnext.so` |
 
-Konsekuensi praktis: **semua biner di repo ini adalah aarch64 bionic**, bukan glibc, dan tidak
-berguna di mesin lain. Karena itu build output tidak di-commit (lihat §6).
+**Practical consequence:** every binary produced here is aarch64 bionic. It will not run on a normal
+desktop, which is why build output is not committed (see §7).
 
 ---
 
-## 2. Hasil utama
+## 2. Results
 
-Semua angka dari `RESULTS.md` di ronde masing-masing, gate PASS, clock 610 MHz.
+All cells below ran at GPU clock 610 MHz, with `cur_freq_after` recorded per run and the validation
+gate passing.
 
-### Vulkan compute — bentuk kernel
+### Vulkan compute — kernel shape
 
-n=65536, L=64, ramp 500 ms, harness `vkopt8` (gate full-buffer + `VkResult` per rep).
+n=65536, `local_size` L=64, 500 ms warm-up, harness `vkopt8` (full-buffer gate plus `VkResult` per
+rep). Values are the per-round medians: K=1, K=2, B5 and B4 from `rounds/r5`, K=3 and K=4 from
+`rounds/r3`, K=8 from `rounds/r2`.
 
-| Sel | Akumulator | FMA/iterasi | GFLOPS |
+| Cell | Accumulators | FMA / iteration | GFLOPS |
 |---|---:|---:|---:|
 | K=1 | 1 | 1 | ~81.4 |
 | **K=2** | 2 | 2 | **~111.0** |
@@ -43,30 +52,31 @@ n=65536, L=64, ramp 500 ms, harness `vkopt8` (gate full-buffer + `VkResult` per 
 | B5 | 4 | 2 | ~92.7 |
 | B4 | 4 | 4 | ~86.1 |
 
-**Puncak tajam di K=2**, bukan plato. K=2/K=1 ≈ 1.36–1.44 dan spike itu bertahan di semua
-local_size yang dicoba (L=32/64/128), jadi efeknya per-thread, bukan per-workgroup.
+**The peak at K=2 is sharp, not a plateau.** The K=2/K=1 ratio is 1.36–1.44 and it holds at every
+`local_size` tried (L=32/64/128), so the effect is per-thread rather than per-workgroup.
 
-Mekanisme spike = **dua FMA independen per iterasi (ILP)**, dibuktikan dengan snowplow
-satu-variabel: menambah akumulator hidup tanpa menambah FMA tidak menaikkan throughput
-(75.4 vs ~112.4), sedangkan 2 FMA/iterasi dengan akumulator hidup tetap 2 mengembalikan spike penuh.
+The mechanism is **two independent FMAs per iteration (ILP)**, established by a one-variable
+snowplow: adding live accumulators without adding FMAs does not raise throughput (75.4 vs ~112.4),
+while 2 FMAs per iteration with the live-accumulator count held at 2 restores the full spike.
 
-### B5 — penalti "nilai hidup melintasi loop"
+### B5 — the cost of a live range that crosses the loop
 
-`r5` menyebut selisih B5 vs K=2 sebagai "efek codegen, mekanisme UNKNOWN". `r5b` mengisolasinya
-jadi satu variabel: math dan epilog identik, hanya **posisi definisi** `a2`/`a3` yang dipindah dari
-sebelum loop ke sesudahnya (`OpStore` baris 148/152 vs `OpLoopMerge` baris 119).
+`r5` described the B5-versus-K=2 gap as "a codegen effect, mechanism UNKNOWN". `r5b` reduced it to a
+single variable: identical math and identical epilogue, with only the **definition site** of `a2`
+and `a3` moved from before the loop to after it (`OpStore` at lines 148/152 versus `OpLoopMerge` at
+line 119).
 
-| Sel | Live range melintasi loop | GFLOPS |
+| Cell | Live range across the loop | GFLOPS |
 |---|---|---:|
-| k2 | tidak ada | 111.40 |
-| b5 | ada | 92.14 |
-| b5b (math identik, definisi setelah loop) | tidak ada | 104.94 |
+| k2 | none | 111.40 |
+| b5 | present | 92.14 |
+| b5b (identical math, defined after the loop) | none | 104.94 |
 
-5 ronde interleaved, rentang tidak bertumpang tindih. Memindahkan definisi memulihkan **12.80 GFLOPS
-(66% selisih)**. Dekomposisi `iters`-sweep menunjukkan seluruh penalti ada di **slope**
-(+20.3% vs +6.5%), bukan di intercept — jadi bukan biaya prolog/epilog.
+Five interleaved rounds, non-overlapping ranges. Moving the definitions recovers **12.80 GFLOPS,
+66% of the gap**. An `iters` sweep puts the entire penalty in the **slope** (+20.3% vs +6.5%), not
+the intercept — so it is not prologue or epilogue cost.
 
-### OpenCL — jangan pakai `fma()`
+### OpenCL — do not use builtin `fma()`
 
 | Kernel (vec4) | GFLOPS |
 |---|---:|
@@ -74,168 +84,210 @@ sebelum loop ke sesudahnya (`OpStore` baris 148/152 vs `OpLoopMerge` baris 119).
 | `a*b+c` | 99.69 |
 | `mad()` | 99.87 |
 
-Jurang **~675x**. `mad()` (boleh non-correct-rounding) secepat mul+add; `-cl-fast-relaxed-math`
-tidak menolong `fma()`. Binary program `fma()` 2.02x lebih besar (5272 B vs 2616 B), jadi jalur
-compiler-nya memang berbeda. Hipotesis mekanismenya (emulasi correctly-rounded) **belum dibuktikan**.
+A **~675x** cliff. `mad()` (permitted to be non-correctly-rounded) is as fast as mul+add, and
+`-cl-fast-relaxed-math` does not rescue `fma()`. The program binary for `fma()` is 2.02x larger
+(5272 B vs 2616 B), so the compiler genuinely takes a different path. The explanation for *why*
+(correctly-rounded emulation) remains a **hypothesis, not a measured mechanism**.
 
-### CPU / RAM / disk (pembanding)
+### CPU / RAM / storage baselines
 
-| Suite | Angka |
+| Suite | Result |
 |---|---|
-| NEON FMA 8-thread | ~12–13.6 GFLOPS |
-| NEON FMA 1-thread | 3.02 GFLOPS |
+| NEON FMA, 8 threads | ~12–13.6 GFLOPS |
+| NEON FMA, 1 thread | 3.02 GFLOPS |
 | scalar | 0.91 GFLOPS |
-| RAM read 8-thread | ≥24.7 GB/s |
-| RAM write 8-thread | 17.0 GB/s |
-| RAM copy 8-thread | 8.0 GB/s payload |
+| RAM read, 8 threads | ≥24.7 GB/s |
+| RAM write, 8 threads | 17.0 GB/s |
+| RAM copy, 8 threads | 8.0 GB/s payload |
 
-RAM single-thread read ~9–10 GB/s adalah **core-limited** (satu LSU), bukan batas bus. Device tidak
-mengekspos peak DRAM yang bisa dibaca: devfreq `cpubw` max 6881 MB/s itu QoS vote, bukan silicon peak.
-
----
-
-## 3. Yang TIDAK diklaim
-
-Ini bagian yang sering dilewatkan orang saat membaca benchmark, jadi ditulis eksplisit:
-
-1. **118 GFLOPS bukan ceiling.** Itu satu titik di (n≈262144–1048576, K=2, L=64, tanpa fma).
-   Sumbu instruction-mix dan memori belum dijelajahi.
-2. **Angka bergantung DVFS.** Clock ramp per-proses; proses dingin bisa membaca ~2x lebih rendah.
-   Semua sel di sini memakai warm-up dispatch nyata 500 ms dan mencatat `cur_freq_after`.
-3. **Local_size ter-bake di SPIR-V.** Setiap L butuh shader sendiri; tidak bisa diubah saat runtime.
-4. **Dispatch panjang bisa parsial.** Pada n=1M K=16, ekor buffer kontigu tidak tertulis
-   (~713.000 work-item tetap). Gate full-buffer yang menangkapnya; gate satu elemen tidak.
-5. **"matched K" ≠ "matched work".** OpenCL membagi `iters`, Vulkan mereplikasi. Perbandingan
-   cross-runtime di repo ini selalu menyebut konfigurasi lengkapnya.
-6. **Mekanisme di level codegen tidak bisa diukur** di device ini: tidak ada hardware counter
-   lewat sysfs KGSL, tidak ada `fdperf`, `msm_kgsl.h` tidak ada di disk. Klaim berhenti di
-   "terisolasi oleh A/B satu variabel", tidak naik ke "mekanisme teridentifikasi".
-
-Satu pekerjaan lanjutan (rekonstruksi ABI compiler shader Adreno lewat disassembly blob
-proprietary) sengaja **tidak** ada di repo ini — lihat §7.
+Single-threaded RAM read at ~9–10 GB/s is **core-limited** (one load/store unit), not a bus limit.
+The device does not expose a readable DRAM peak: the devfreq `cpubw` maximum of 6881 MB/s is a
+Qualcomm QoS vote, not silicon peak.
 
 ---
 
-## 4. Struktur
+## 3. Measurement methodology
+
+These rules exist because each of them caught a wrong number at some point. A cell that violates any
+of them is discarded, not averaged.
+
+1. **Full-buffer gate.** After every timed run the whole output buffer is checked (`nbad`, `nzero`,
+   `firstbad`, `lastbad`). A single-element gate is insufficient: long dispatches can execute
+   *partially*, leaving a contiguous unwritten tail that a one-element check never sees.
+2. **`VkResult` per submit and per wait.** An ignored failed submit makes `wall ≈ 0` and produces
+   impossible throughput. Cells with `wall ≈ 0` are thrown away.
+3. **Real warm-up.** Clock ramp is per-process and a cold process can read roughly 2x low, so every
+   cell runs a real 500 ms dispatch warm-up and records the clock afterwards.
+4. **One variable per comparison.** Attribution claims come from A/B pairs that differ in exactly
+   one thing (FMA count, live-range position, local size).
+5. **SPIR-V provenance.** Cells that form a curve are regenerated from a single template, then
+   checked with `spirv-dis` (op counts, loop-body contents) so the curve is not a generator artefact.
+
+---
+
+## 4. What is explicitly not claimed
+
+This section exists because benchmark readers routinely over-read results:
+
+1. **118 GFLOPS is not a ceiling.** It is one point at (n≈262144–1048576, K=2, L=64, no `fma`).
+   The instruction-mix and memory axes were never explored.
+2. **Results depend on DVFS.** All reported cells use a real warm-up and record the resulting clock;
+   an unwarmed measurement is not comparable.
+3. **`local_size` is baked into SPIR-V.** Each L needs its own shader; it cannot be changed at
+   runtime.
+4. **Long dispatches can be partial.** At n=1M with K=16 the contiguous tail of the buffer was never
+   written (~713,000 work-items' worth). Only the full-buffer gate catches this.
+5. **"Matched K" is not "matched work".** OpenCL divides `iters` across accumulators; Vulkan
+   replicates the loop. Every cross-runtime comparison here states the full configuration.
+6. **Codegen-level mechanism is not measurable on this device.** There are no hardware counters via
+   KGSL sysfs, no `fdperf`, and no `msm_kgsl.h` on disk. Claims stop at "isolated by a one-variable
+   A/B" and are not promoted to "mechanism identified".
+
+A follow-up line of work — reconstructing the Adreno shader compiler ABI from a proprietary blob —
+is deliberately **not** part of this repository (see §8).
+
+---
+
+## 5. Repository layout
 
 ```
-src/                                  probe & harness bersama (dipakai lintas ronde)
-  mem/       bench.c kernels.S build.sh   benchmark RAM + disk (asm NEON tangan)
-  opencl/    clinfo.c clprobe*.c clver.c  probe OpenCL: platform, device, versi, binary
-             gpucl.c oclmech*.c oclws*.c  harness OpenCL (fma vs mul+add, grid, workgroup)
-  vulkan/    vkcomp.c gpufma.c            harness Vulkan awal
-  gles/      gles.c                       probe OpenGL ES
-  soc/       socprobe.c dsp*.c            probe SoC dan DSP Hexagon
-  video/     vdec*.c vidprobe.c           probe decode H.264 via V4L2
+src/                                  shared probes and harnesses, used across rounds
+  mem/       bench.c kernels.S build.sh   RAM + disk benchmark (hand-written NEON kernels)
+  opencl/    clinfo.c clprobe*.c clver.c  OpenCL probes: platform, device, version, program binary
+             gpucl.c oclmech*.c oclws*.c  OpenCL harnesses (fma vs mul+add, grid shape, workgroup)
+  vulkan/    vkcomp.c gpufma.c            early Vulkan harnesses
+  gles/      gles.c                       OpenGL ES probe
+  soc/       socprobe.c dsp*.c            SoC and Hexagon DSP probes
+  video/     vdec*.c vidprobe.c           H.264 decode probe via V4L2
   misc/      hello.c                      smoke test
 
-rounds/rN/                            satu direktori per ronde, bentuknya seragam
-  RESULTS.md  SPEC.md  REVIEW.md  VERIFY.md   dokumen (r1 punya keempatnya)
-  run_*.sh  gen_*.py                        script & generator ronde itu
-  src/                                     harness khusus ronde (vkopt8.c, oclgrid.c, ...)
-  shaders/                                 .comp + .spv ronde itu
-  logs/                                    raw log ronde itu
-  artifacts/                               *.bin program OpenCL (tidak di-track)
+rounds/rN/                            one directory per round, uniform shape
+  RESULTS.md  SPEC.md  REVIEW.md  VERIFY.md   documents (r1 carries all four)
+  run_*.sh  gen_*.py                        round scripts and shader generators
+  src/                                      round-specific harnesses (vkopt8.c, oclgrid.c, ...)
+  shaders/                                  .comp sources and .spv builds for that round
+  logs/                                     raw logs for that round
+  artifacts/                                OpenCL program binaries (not tracked)
 
-  r1/   ruang konfigurasi: batch-vs-fence, OpenCL lsize-ILP
-  r2/   strategi eksekusi: representasi, compiler, bentuk kernel
-  r3/   pembeda spike K=2 (L-sweep) + jalur fma()
-  r4/   eliminasi mekanisme spike + batas dispatch
-  r5/   matriks register-hidup x independent-FMA (B4/B5)
-  r5b/  kontrol satu-variabel untuk B5 (definisi sebelum vs sesudah loop)
+  r1/   configuration space: batch-vs-fence, OpenCL lsize x ILP
+  r2/   execution strategy: representation, compiler path, kernel shape
+  r3/   discriminating the K=2 spike (L sweep) and the fma() path
+  r4/   eliminating spike mechanisms and the dispatch limit
+  r5/   live-register x independent-FMA matrix (B4/B5)
+  r5b/  one-variable control for B5 (definition before vs after the loop)
 
-shaders/   .comp contoh di root (fma.comp, fma8.comp)
-docs/      catatan temuan
-logs/      output probe yang direkam (di luar ronde)
-assets/    test vector pihak ketiga (tidak di-track)
-build/     hasil build, dipisah per ronde: build/r1, build/r3, build/r4 (tidak di-track)
+shaders/   root-level example sources (fma.comp, fma8.comp)
+docs/      write-ups  (see docs/gpu-de-xfce-findings.md)
+logs/      captured probe output that does not belong to a single round
+assets/    third-party test vectors (not tracked)
+build/     build output, split per round: build/r1, build/r3, build/r4 (not tracked)
 ```
 
-Round run scripts resolve their own directory (`cd "$(dirname "$0")"`), so a checkout works
-from any path - no absolute path is baked in. From inside `rounds/rN/`, the shared binaries
-are reached as `../../build/rN/<name>` and the shaders as `shaders/<name>.spv`.
-
-Setiap ronde punya `RESULTS.md` (angka + adjudikasi) dan raw log mentah. `r1` juga punya
-`SPEC.md`/`REVIEW.md`/`VERIFY.md` karena dijalankan sebagai ronde berkontrak.
+Round scripts resolve their own location (`cd "$(dirname "$0")"`), so a checkout works from any
+path — no absolute path is baked in. From inside `rounds/rN/`, shared binaries are reached as
+`../../build/rN/<name>` and shaders as `shaders/<name>.spv`.
 
 ---
 
-## 5. Build & jalankan
+## 6. Build and run
 
-### Prasyarat
+### Prerequisites
 
-```
-NDK      /opt/android/android-sdk/ndk/30.0.14904198
-SPIR-V   glslangValidator, spirv-val, spirv-dis   (glslc tidak ada di container ini)
-Device   Android dengan Adreno 616, akses root, /vendor ter-mount di chroot
-```
+- An aarch64 Android NDK (the cells here used r30, `30.0.14904198`). In this lab it lives at
+  `/opt/android/android-sdk/ndk/30.0.14904198`; adjust to your own installation.
+- SPIR-V tools: `glslangValidator`, `spirv-val`, `spirv-dis`. `glslc` is not available here.
+- A rooted device with Adreno 616 and `/vendor` mounted inside the chroot.
 
-### Benchmark RAM/disk (host native)
+### RAM and storage benchmark (native host build)
 
 ```sh
-./src/mem/build.sh  # -Os + flag size, kernel HOT di-O3 lewat __attribute__
-./build/bench mem         # sweep cache 8 KB -> 256 MB, thread scaling, pointer-chase
+./src/mem/build.sh          # -Os plus size flags; the HOT kernels stay at -O3 via attributes
+./build/bench mem           # cache sweep 8 KB -> 256 MB, thread scaling, pointer chase
 ./build/bench disk ./bench.bin
 ```
 
-### Harness GPU (bionic, cross-compile)
+### GPU harness (bionic, cross-compiled)
 
 ```sh
-CC=/opt/android/android-sdk/ndk/30.0.14904198/toolchains/llvm/prebuilt/linux-arm64/bin/aarch64-linux-android33-clang
-$CC -O2 -o build/r4/vkopt8 rounds/r4/src/vkopt8.c -ldl
+NDK="$ANDROID_NDK_HOME"     # or the explicit path above
+CC="$NDK/toolchains/llvm/prebuilt/linux-arm64/bin/aarch64-linux-android33-clang"
 
-# jalankan dari chroot; path biner HARUS absolut
+mkdir -p build/r4
+"$CC" -O2 -o build/r4/vkopt8 rounds/r4/src/vkopt8.c -ldl
+
+# Run from the chroot. The binary path MUST be absolute.
 LD_LIBRARY_PATH=/vendor/lib64:/system/lib64 \
   /apex/com.android.runtime/bin/linker64 "$PWD/build/r4/vkopt8" 2000 65536 10 64 2 ramp
 ```
 
-Jebakan yang sudah memakan waktu dan karena itu dicatat:
+Traps that cost real time and are therefore documented:
 
-- **Path biner wajib absolut.** `linker64 ./x` gagal `expected absolute path`.
-- **stdout block-buffered** → program tampak hang. Panggil `setvbuf(stdout,0,_IONBF,0)`.
-- Driver Adreno di-`dlopen` **langsung**; simbolnya C++ mangled (`_ZN11qglinternal21vkGetInstanceProcAddrE...`),
-  bukan `vkGetInstanceProcAddr` polos. Link tanpa `-lvulkan`.
+- **The binary path must be absolute.** `linker64 ./x` fails with `expected absolute path`.
+- **stdout is block-buffered**, which makes a working program look hung. Call
+  `setvbuf(stdout, NULL, _IONBF, 0)` first.
+- The Adreno driver is **`dlopen`ed directly**; its symbols are C++ mangled
+  (`_ZN11qglinternal21vkGetInstanceProcAddrE...`), not plain `vkGetInstanceProcAddr`. Link with
+  `-ldl`, never `-lvulkan`.
 
 ### SPIR-V
 
-`.spv` tidak di-commit (lihat §6). Regenerasi dari `.comp`:
+`.spv` files are not committed (§7). Regenerate them from `.comp`:
 
 ```sh
 glslangValidator -V -o out.spv in.comp && spirv-val out.spv
 ```
 
-Tiga ronde punya generator yang membuat semua selnya dari satu template (provenance seragam):
+Three rounds ship generators that emit every cell from one template (uniform provenance):
 `rounds/r2/gen_vk_shaders.py`, `rounds/r3/gen_grid.py`, `rounds/r5/gen_r5.py`.
 
-**Batasan yang perlu diketahui:** dari 55 `.spv` di tree asli, **14 tidak punya `.comp` senama** —
-file itu dihasilkan generator atau sudah dihapus. Artinya tidak semua sel bisa di-rebuild persis
-dari isi repo ini; sel yang `.comp`-nya ada bisa, sisanya hanya raw log-nya yang tersisa.
+### Reproducibility caveats
+
+Stated plainly rather than implied:
+
+- Of the 55 `.spv` files in the original tree, **14 have no same-named `.comp`**. Those were produced
+  by a generator or have since been deleted. Cells whose `.comp` is present can be rebuilt exactly;
+  for the rest only the raw log survives.
+- **`rounds/r2` tracks no `.comp` and no `.spv` at all.** Its six cells exist only as raw logs; to
+  rebuild them, run `rounds/r2/gen_vk_shaders.py` and then compile the output.
+- `rounds/r5` and `rounds/r5b` have no round-local harness source: both drive `build/r4/vkopt8`, as
+  their `RESULTS.md` states.
+- `rounds/r1/logs/q3-large-n.raw.txt` is absent because Q3 was never executed. This is recorded in
+  `rounds/r1/RESULTS.md`, not a missing artefact.
 
 ---
 
-## 6. Kenapa binary tidak di-commit
+## 7. Why binaries are not committed
 
-`.gitignore` di repo ini memakai pola **allowlist**, bukan denylist: semuanya di-ignore dulu,
-lalu hanya source/doc/log yang di-un-ignore.
+`.gitignore` uses an **allowlist**, not a denylist: everything is ignored first, then only sources,
+documents and raw logs are un-ignored.
 
-Alasannya konkret: tree asli menumpuk **39 binary ELF tanpa ekstensi** dan **55 blob `.spv`**.
-Denylist nama binary akan basi begitu ronde berikutnya menambah `vkopt10`; allowlist tidak bisa
-bocor karena kelupaan. Konsekuensinya: **jenis file baru akan ter-ignore sampai ditambahkan ke
-`.gitignore`** — kalau ada file yang hilang dari `git ls-files`, cek daftar itu dulu.
+The reason is concrete. The original tree accumulated **39 extensionless aarch64 ELF binaries** and
+**55 `.spv` blobs**. A denylist of binary names goes stale the moment a new round adds `vkopt10`; an
+allowlist cannot leak by omission. The trade-off is the reverse risk, and it is deliberate: a **new
+file type is ignored until it is added to `.gitignore`**. If a file is missing from `git ls-files`,
+check that list first.
 
-Yang sengaja tidak masuk: `*.spv` (regenerate dari `.comp`), `*.bin` (binary program OpenCL,
-regenerate dengan menjalankan `oclbin`), `foreman.264` (test vector H.264 pihak ketiga dengan
-lisensi tidak jelas), dan semua biner hasil build.
+Excluded on purpose: `*.spv` (regenerate from `.comp`), `*.bin` (OpenCL program binaries, regenerate
+by running `oclbin`), `foreman.264` (third-party H.264 test vector with unclear licensing), and all
+build output.
 
 ---
 
-## 7. Lisensi & cakupan
+## 8. License and scope
 
-Kode di sini ditulis sendiri. Tidak ada blob proprietary, firmware, atau materi Qualcomm yang
-di-commit. Pekerjaan reverse-engineering terhadap blob compiler Adreno (disassembly, rekonstruksi
-ABI, spesifikasi perilaku) **tidak** ada di repo ini dan disimpan terpisah.
+Released under the **MIT License**; see [LICENSE](LICENSE).
 
-Kalau kamu menjalankan ini di device lain: semua angka di sini terikat ke satu unit Adreno 616
-dengan clock 610 MHz. Jangan pindahkan angkanya ke SoC lain tanpa mengukur ulang — DVFS,
-ukuran cache, dan lebar bus berbeda, dan justru itu yang paling sering membuat benchmark
-GPU menyesatkan.
+Scope notes:
+
+- All code here was written for this lab. **No proprietary blob, firmware image, or Qualcomm
+  material is committed.** The vendor libraries the harnesses talk to are read from the device at
+  runtime and are not redistributed.
+- The reverse-engineering work on the Adreno shader compiler (disassembly, ABI reconstruction,
+  behavioural specification) is **not** part of this repository and is kept separately.
+- Findings that are not about the GPU are written up in [`docs/`](docs), for example
+  [`docs/gpu-de-xfce-findings.md`](docs/gpu-de-xfce-findings.md) on why hardware GL/EGL is
+  unreachable for an X11 desktop on this kernel.
+
+If you run this on different hardware: every number here is bound to one Adreno 616 unit at
+610 MHz. Do not transplant the figures to another SoC without re-measuring — DVFS behaviour, cache
+sizes and bus width differ, and that mismatch is the most common way GPU benchmarks mislead.
