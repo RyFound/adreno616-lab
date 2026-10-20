@@ -1,8 +1,8 @@
 #!/bin/bash
 # Single-writer OpenCL campaign. Bounded for the pathologically slow Adreno CL runtime.
-cd /home/han/adreno616-lab/gpu-r1
+cd "$(dirname "$0")"
 LK=/apex/com.android.runtime/bin/linker64
-CL=/home/han/adreno616-lab/gpu-r1/oclgrid
+CL=/home/han/adreno616-lab/build/oclgrid
 export LD_LIBRARY_PATH=/vendor/lib64:/system/lib64
 
 # guard: kill any stray oclgrid (safe here: this script body is not in ps)

@@ -1,6 +1,6 @@
 # RESULTS-r2 — Strategi Eksekusi GPU Adreno 616: Representasi × Compiler Path × Bentuk Kernel × Runtime
 
-Dibuat 2026-10-08. Ronde lanjutan gpu-r1. Semua angka dari raw log mentah di `/home/han/adreno616-lab/gpu-r2/`. Device: Adreno 616, clock 610 MHz, chroot Ubuntu (driver Adreno via dlopen; OpenCL via shim libOpenCL→libCB).
+Dibuat 2026-10-08. Ronde lanjutan gpu-r1. Semua angka dari raw log mentah di `/home/han/adreno616-lab/rounds/r2/`. Device: Adreno 616, clock 610 MHz, chroot Ubuntu (driver Adreno via dlopen; OpenCL via shim libOpenCL→libCB).
 
 **Framing (aturan user, `gpu-throughput-scoped-not-ceiling`):** setiap angka GFLOPS = throughput pada konfigurasi X, BUKAN "plafon/maximum hardware". Semua angka disertai (n, iters, reps, bentuk kernel, status ramp, apakah pakai `fma()`).
 

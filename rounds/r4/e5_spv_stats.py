@@ -4,7 +4,7 @@
 # entirely in the driver's codegen. Deterministic, no GPU, free information.
 import os, re, subprocess, sys, glob
 
-base = sys.argv[1] if len(sys.argv) > 1 else '/home/han/adreno616-lab/gpu-r3'
+base = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'r3')
 
 def stats(path):
     try:

@@ -125,7 +125,7 @@ STATUS: DIHENTIKAN atas perintah lead. **`q3-large-n.raw.txt` TIDAK PERNAH DITUL
 
 Harness r1 (`oclws.c`) memakai `zv=fma(zv,xv,yv)` di dalam loop. Di device ini (Adreno 616, OpenCL 2.0 lewat shim `libOpenCL.so → libCB`), **builtin `fma()` (correctly-rounded) turun ke jalur emulasi software** — itu penyebab angka 0.147, bukan jalur loader.
 
-**Bukti 1 — satu token diubah di harness r1 SENDIRI** (`oclws.c` disalin ke `/home/han/adreno616-lab/oclws_muladd.c`, hanya `fma(zv,xv,yv)` → `zv*xv+yv`, sisa identik; build & jalankan identik, n=65536 iters=2000, gate `C0=2000` PASS ×3 keduanya):
+**Bukti 1 — satu token diubah di harness r1 SENDIRI** (`oclws.c` disalin ke `/home/han/adreno616-lab/src/opencl/oclws_muladd.c`, hanya `fma(zv,xv,yv)` → `zv*xv+yv`, sisa identik; build & jalankan identik, n=65536 iters=2000, gate `C0=2000` PASS ×3 keduanya):
 
 | varian (harness r1, file yang sama) | wall_s (3 run) | GFLOPS |
 |---|---|---|
@@ -134,7 +134,7 @@ Harness r1 (`oclws.c`) memakai `zv=fma(zv,xv,yv)` di dalam loop. Di device ini (
 
 ~600× dari satu token, di dalam harness yang menghasilkan 0.148. **§8.2 ("jalur OpenCL/loader patologis") terjelaskan: yang patologis adalah builtin `fma()`, bukan loader.**
 
-**Bukti 2 — `/home/han/adreno616-lab/oclmech.c` (6 arm, satu proses/queue/device, n=65536, iters=2000, L=64, clock 610 MHz, gate `C0=2000` PASS semua, reps=10):**
+**Bukti 2 — `/home/han/adreno616-lab/src/opencl/oclmech.c` (6 arm, satu proses/queue/device, n=65536, iters=2000, L=64, clock 610 MHz, gate `C0=2000` PASS semua, reps=10):**
 
 | arm | operasi | opts | GFLOPS |
 |---|---|---|---|
@@ -145,7 +145,7 @@ Harness r1 (`oclws.c`) memakai `zv=fma(zv,xv,yv)` di dalam loop. Di device ini (
 | E | skalar `zv*xv+yv` | — | **37.33** |
 | F | skalar `fma()` | — | **0.770** |
 
-**Bukti 3 — `/home/han/adreno616-lab/oclmech2.c` (4 arm skalar, konfigurasi sama, gate PASS semua):**
+**Bukti 3 — `/home/han/adreno616-lab/src/opencl/oclmech2.c` (4 arm skalar, konfigurasi sama, gate PASS semua):**
 
 | arm | operasi | opts | GFLOPS |
 |---|---|---|---|
@@ -201,7 +201,7 @@ Kernel ber-`fma()` pada iters=2000 memakan ~7 s/dispatch — persis di ambang wa
 
 ---
 
-**File bukti (di disk):** `/home/han/adreno616-lab/oclmech.c`, `/home/han/adreno616-lab/oclmech2.c`, `/home/han/adreno616-lab/oclws_muladd.c` (+ binernya). Harness r1 asli: `/home/han/adreno616-lab/gpu-r1/oclws.c`, `vkbatch.c`.
+**File bukti (di disk):** `/home/han/adreno616-lab/src/opencl/oclmech.c`, `/home/han/adreno616-lab/src/opencl/oclmech2.c`, `/home/han/adreno616-lab/src/opencl/oclws_muladd.c` (+ binernya). Harness r1 asli: `/home/han/adreno616-lab/rounds/r1/oclws.c`, `vkbatch.c`.
 
 ---
 

@@ -1,6 +1,6 @@
 /* gpufma.c - OpenCL FMA throughput bench with ILP (independent accumulators).
  * Build bionic: NDK clang -O2 -o gpufma gpufma.c -ldl
- * Run: LD_LIBRARY_PATH=... /apex/com.android.runtime/bin/linker64 /home/han/adreno616-lab/gpufma [iters] [n] [acc]
+ * Run: LD_LIBRARY_PATH=... /apex/com.android.runtime/bin/linker64 /home/han/adreno616-lab/build/gpufma [iters] [n] [acc]
  *
  * NOTE: source has NO literal backslash-n inside C strings (write_file corrupts them);
  * all newlines are emitted via puts()/printf with explicit \n escapes only in format args

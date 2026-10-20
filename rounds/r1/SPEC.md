@@ -127,7 +127,7 @@ Konteks: setelah ronde ditutup, user melaporkan agent lain mencapai OpenCL ~90 G
 
 ### 9.1 Temuan terverifikasi: builtin fma() adalah jurang (menggantikan 8.2 butir 2)
 
-Bukti: /home/han/adreno616-lab/oclmech.c, raw log tersimpan di gpu-r1/oclmech.raw.txt (re-run independen lead, semua gate C0==2000 PASS, clock 610 MHz, n=65536, iters=2000, reps=10):
+Bukti: /home/han/adreno616-lab/src/opencl/oclmech.c, raw log tersimpan di gpu-r1/oclmech.raw.txt (re-run independen lead, semua gate C0==2000 PASS, clock 610 MHz, n=65536, iters=2000, reps=10):
 
 | arm | operasi | GFLOPS |
 |---|---|---|
