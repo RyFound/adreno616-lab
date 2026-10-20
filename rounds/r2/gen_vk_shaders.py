@@ -3,6 +3,7 @@
 # Control for advisor finding 1: single template => uniform SPIR-V provenance.
 import sys, os
 base = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), 'shaders')
+os.makedirs(base, exist_ok=True)
 L = 64
 for K in (1,2,3,4,8,16):
     s = []

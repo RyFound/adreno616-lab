@@ -3,6 +3,7 @@
 # Uniform template => uniform SPIR-V provenance (control from r2).
 import sys, os
 base = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), 'shaders')
+os.makedirs(base, exist_ok=True)
 LS = [32, 64, 96, 128]
 KS = [1, 2, 3, 4, 8, 16]
 for L in LS:

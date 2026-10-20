@@ -201,7 +201,7 @@ Kernel ber-`fma()` pada iters=2000 memakan ~7 s/dispatch — persis di ambang wa
 
 ---
 
-**File bukti (di disk):** `/home/han/adreno616-lab/src/opencl/oclmech.c`, `/home/han/adreno616-lab/src/opencl/oclmech2.c`, `/home/han/adreno616-lab/src/opencl/oclws_muladd.c` (+ binernya). Harness r1 asli: `/home/han/adreno616-lab/rounds/r1/oclws.c`, `vkbatch.c`.
+**File bukti (di disk):** `/home/han/adreno616-lab/src/opencl/oclmech.c`, `/home/han/adreno616-lab/src/opencl/oclmech2.c`, `/home/han/adreno616-lab/src/opencl/oclws_muladd.c` (+ binernya). Harness r1 asli: `rounds/r1/src/oclws.c`, `rounds/r1/src/vkbatch.c`.
 
 ---
 
